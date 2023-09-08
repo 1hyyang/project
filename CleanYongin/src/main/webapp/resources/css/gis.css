@@ -1,0 +1,244 @@
+*{
+	margin: auto;
+	box-sizing: border-box;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+html, body{
+	height: 100%;
+	padding: 40px;
+	background-color: #515555;
+}
+#container{
+	border: 5px solid ivory;
+	border-radius: 5px;
+	width: 1400px; 
+	height: 795px;
+	background-color: ivory;
+}
+#controller{
+	width: 25%; 
+	height: 100%; 
+	float: left;
+	user-select: none;
+}
+#title{
+	height: 80px;
+	line-height: 80px;
+	
+}
+#title_logo{
+	float: left;
+	width: 80px;
+	height: 80px;
+	line-height: 100px;
+}
+#title_logo_yongin{
+	width: 100%;
+	height: 100%;
+	padding: 15px;
+}
+#title_content{
+	float: left;
+	width: 265px;
+	height: 80px;
+	line-height: 80px;
+	font-size: 1.4em;
+	font-weight: 600;
+}
+.tbl{
+	border: 1px solid lightgrey;
+	box-shadow: 3px 3px 3px lightgrey;
+	border-radius: 5px;
+	background-color: white;
+	width: 90%;
+	height: 40px;
+	line-height: 40px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	text-align: center;
+	font-size: 0.9em;
+	border-spacing: 0px;
+}
+.tbl_title{
+	border-right: 1px solid lightgrey;
+	width: 25%;
+	height: 100%;
+	background-color: rgb(226, 226, 226);
+}
+.tbl_content{
+	width: 25%;
+	height: 100%;
+	border-right: 1px solid lightgrey;
+	cursor: pointer;
+}
+.tbl_carlist_title{
+	border-right: 1px solid lightgrey;
+	background-color: rgb(226, 226, 226);
+}
+.tbl_carlist_content{
+	width: 75%;
+	height: 100%;
+	border-bottom: 1px solid lightgrey;
+	cursor: pointer;
+}
+#icon_plus{
+	border: 1px solid lightgrey;
+	width: 25px;
+	height: 25px;
+	border-radius: 25px;
+	background-color: rgb(226, 226, 226);	
+	box-shadow: 3px 3px 3px lightgrey;
+	text-align: center;
+	line-height: 20px;
+	font-weight: 600;
+	float: left;
+	margin-left: 15px;
+}
+#btn_addCar, #btn_addData, #btn_chart{
+	margin-right: 9px;
+	cursor: pointer;
+}
+.tbl_noSelect{
+	cursor: default;
+}
+.tbl_selected{
+	background-color: #0054a7;
+	color: white;
+	cursor: pointer;
+}
+.tbl_selected_hybrid{
+	background-color: #00aeba;
+	color: white;
+	cursor: pointer;
+}
+.gu_selected{
+	background-color: #0054a7;
+	color: white;
+	cursor: pointer;
+}
+
+/* 지도 */
+#map{
+	border-radius: 5px;
+	width: 75%; 
+	height: 100%; 
+	float: left;
+}
+.ol-mycontrol {
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    padding: 4px;
+    margin-left: 10px;
+    position: block;
+    width: 136px;
+    top: 5px;
+    left: 40px;
+	display: none;
+}
+.ol-mycontrol button {
+    float: left;
+}
+.ol-mycontrol button.on {
+    background-color: rgba(124,60,55,.5);
+}
+
+/* 달력 */
+.Calendar td {
+	height: 31px;
+	line-height: 31px;
+	font-size: 0.9em;
+}
+.Calendar { 
+	width: 231px;
+	height: 100px;
+	text-align: center;
+	margin: 0 auto; 
+	border-spacing: 0px;
+}
+.Calendar>thead>tr:first-child>td { 
+	font-weight: bold; 
+}
+.noCleanedDay{
+	color: lightgrey;
+	cursor: default;
+}
+.cleanedDay{           
+	cursor: pointer;
+}
+.cleanedDay.selectedDay{            
+	background: #ea8139;        
+	color: #fff;
+	cursor: pointer;
+	border-radius: 31px;
+}
+
+/* 모달창 */
+.modal {
+    width: 400px;
+    background-color: #fff;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+}
+.modal_title {
+	padding: 13px;
+	border-bottom: 1px solid lightgrey;
+	font-size: 1em;
+	font-weight: 600;
+}
+.modal_body {
+	padding: 10px 20px 10px 20px;
+	border-bottom: 1px solid lightgrey;
+}
+.modal_foot {
+	padding: 10px;
+	float: right;
+}
+input[name=car_num], select[name=car_type]{
+	border: 1px solid lightgrey;
+	border-radius: 5px;
+	margin: 5px;
+	margin-bottom: 15px;
+	width: 350px;
+	height: 30px;
+	line-height: 30px;	
+}
+.file-selector{
+	border: 1px solid lightgrey;
+	border-radius: 5px;
+	margin: 5px;
+	margin-bottom: 15px;
+	width: 350px;
+	height: 30px;
+	line-height: 30px;
+}
+input[type=file]::file-selector-button{
+	border: 1px solid transparent;
+	border-right: 1px solid lightgrey;
+	border-radius: 5px 0px 0px 5px;
+	background-color: rgb(226, 226, 226);
+	height: 30px;
+	cursor: pointer;	
+}
+.btn_modal_submit{
+	border: 1px solid #00aeba;
+	border-radius: 5px;
+	width: 50px;
+	height: 30px;
+	cursor: pointer;
+	background-color: #00aeba; 
+	color: #fff;
+	margin-right: 3px;
+}
+.btn_modal_close{
+	border: 1px solid #888;
+	border-radius: 5px;
+	width: 50px;
+	height: 30px;
+	cursor: pointer;
+	background-color: #888; 
+	color: #fff;
+}
+.info{
+	font-size: 0.7em;
+	color: red;
+}

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cleanyongin.mapper.GisMapper">
+  <select id="getCarList" resultType="com.cleanyongin.vo.CarVO">
+  	select * from car
+  </select>
+ 
+  <select id="getDateList" resultType="com.cleanyongin.vo.PointsVO">
+  	select distinct(date) from points where car_num = #{car_num}
+  </select>
+  
+  <select id="getCleanTimeRatio" resultType="com.cleanyongin.vo.PointsVO">
+  	select 
+	    (select max(to_timestamp(time, 'HH24:MI:SS'))-min(to_timestamp(time, 'HH24:MI:SS')) from points where date = #{date} and car_num = #{car_num}) as time,	
+	round
+		((select count(*) from points where date = #{date} and car_num = #{car_num} and (noise>=80 and rpm>=1500)) 
+		* 100.0
+		/ (select count(*) from points where date = #{date} and car_num = #{car_num}), 2) as ratio
+  </select>
+  
+  <select id="getCenter" resultType="com.cleanyongin.vo.PointsVO">
+  	select * from points where date = #{date} and car_num = #{car_num} order by time desc limit 1
+  </select>
+  
+  <insert id="insertCar">
+  	insert into car (car_num, car_type) values (#{car_num}, #{car_type})
+  </insert>
+  
+  <insert id="insertData_gps">
+  	insert into temp_gps (car_num, date, time, longitude, latitude) values (#{car_num}, #{date}, #{time}, #{longitude}, #{latitude})
+  </insert>
+  
+  <insert id="insertData_rpm">
+  	insert into temp_rpm (car_num, date, time, rpm) values (#{car_num}, #{date}, #{time}, #{rpm})
+  </insert>
+  
+  <insert id="insertData_noise">
+  	insert into temp_noise (car_num, date, time, noise) values (#{car_num}, #{date}, #{time}, #{noise})
+  </insert>
+  
+  <insert id="insertTempToPoints">
+	insert into points (car_num, date, time, lon, lat, noise, rpm, geom)
+		select
+		    temp_gps.car_num,
+		    temp_gps.date,
+		    temp_gps.time,
+		    temp_gps.longitude,
+		    temp_gps.latitude,
+		    temp_noise.noise,
+		    temp_rpm.rpm,
+		    ST_SetSRID(ST_MakePoint(temp_gps.longitude::numeric, temp_gps.latitude::numeric), 4326)
+		from
+		    temp_gps
+		    join temp_noise on temp_gps.car_num = temp_noise.car_num and temp_gps.date = temp_noise.date and temp_gps.time = temp_noise.time
+		    join temp_rpm on temp_gps.car_num = temp_rpm.car_num and temp_gps.date = temp_rpm.date and temp_gps.time = temp_rpm.time
+  </insert>
+  
+  <delete id="deleteTemp_gps">
+  	delete from temp_gps
+  </delete>
+  
+  <delete id="deleteTemp_rpm">
+  	delete from temp_rpm
+  </delete>
+  
+  <delete id="deleteTemp_noise">
+  	delete from temp_noise
+  </delete>
+  
+  <delete id="deleteCourse">
+  	delete from course
+  </delete>
+  
+  <insert id="insertCourse">
+  	insert into course (car_num, date, geom)
+		select car_num, date, ST_MakeLine(geom order by time)
+		from points
+		group by car_num, date
+  </insert>
+</mapper>
