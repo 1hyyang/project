@@ -43,19 +43,19 @@ window.addEventListener("load", function(){
 			
 		    // 기존의 clean_o, clean_x, beginPoint, endPoint, course 레이어를 삭제한다
 		    map.getLayers().getArray()
-			  .filter(layer => layer.get('name')==='clean_o')
+			  .filter(layer => layer.get("name")==="clean_o")
 			  .forEach(layer => map.removeLayer(layer));    
 		    map.getLayers().getArray()
-			  .filter(layer => layer.get('name')==='clean_x')
+			  .filter(layer => layer.get("name")==="clean_x")
 			  .forEach(layer => map.removeLayer(layer));
 		    map.getLayers().getArray()
-			  .filter(layer => layer.get('name')==='beginPoint')
+			  .filter(layer => layer.get("name")==="beginPoint")
 			  .forEach(layer => map.removeLayer(layer));
 		    map.getLayers().getArray()
-			  .filter(layer => layer.get('name')==='endPoint')
+			  .filter(layer => layer.get("name")==="endPoint")
 			  .forEach(layer => map.removeLayer(layer));
 		    map.getLayers().getArray()
-			  .filter(layer => layer.get('name')==='course')
+			  .filter(layer => layer.get("name")==="course")
 			  .forEach(layer => map.removeLayer(layer));
 		    
 			// 기존의 운행시간, 청소비율을 삭제한다
@@ -64,7 +64,7 @@ window.addEventListener("load", function(){
 
 		    // 줌아웃하고 중심 좌표를 이동한다
 		    map.getView().animate({
-		        center: ol.proj.transform([127.1775537, 37.2410864], 'EPSG:4326', 'EPSG:900913'),
+		        center: ol.proj.transform([127.1775537, 37.2410864], "EPSG:4326", "EPSG:900913"),
 		        zoom: 11.5,
 		        duration: 800
 		    }); 
@@ -160,17 +160,17 @@ window.addEventListener("load", function(){
 				</table>
 			</div>
 			
-			<div style="position: fixed; top: 830px;">
+			<div style="position: absolute; top: 822px;">
 				<div id="btn_addCar" style="display: inline-block">
-					<div id="icon_plus"><i class="fa-solid fa-plus" style="font-size: 0.8em"></i></div><span style="margin-left: 10px; font-size: 0.9em">차량 추가</span>
+					<div class="btn_circle_icon"><i class="fa-solid fa-plus"></i></div><span class="btn_circle_content">차량 추가</span>
 				</div>
 				
 				<div id="btn_addData" style="display: inline-block">
-					<div id="icon_plus"><i class="fa-solid fa-plus" style="font-size: 0.8em"></i></div><span style="margin-left: 10px; font-size: 0.9em">데이터 추가</span>
+					<div class="btn_circle_icon"><i class="fa-solid fa-plus"></i></div><span class="btn_circle_content">데이터 추가</span>
 				</div>
 						        
-				<div id="btn_chart" style="display: inline-block">
-					<div id="icon_plus"><i class="fa-solid fa-chart-line" style="font-size: 0.8em"></i></div><span style="margin-left: 10px; font-size: 0.9em">통계</span>
+				<div id="btn_question" style="display: inline-block">
+					<div class="btn_circle_icon"><i class="fa-solid fa-question"></i></div><span class="btn_circle_content">도움말</span>
 				</div>
 			</div>
 			
@@ -189,7 +189,7 @@ window.addEventListener("load", function(){
 			        </div>
 			        <div class="modal_foot">
 			            <button type="submit" class="btn_modal_submit">확인</button>
-			            <button type="button" class="btn_modal_close">취소</button>
+			            <button type="button" class="btn_modal_close">닫기</button>
 			        </div>
 			    </form>
 	        </div>
@@ -208,9 +208,25 @@ window.addEventListener("load", function(){
 			        </div>
 			        <div class="modal_foot">
 			            <button type="submit" class="btn_modal_submit">확인</button>
-			            <button type="button" class="btn_modal_close">취소</button>
+			            <button type="button" class="btn_modal_close">닫기</button>
 			        </div>
 			    </form>
+	        </div>
+	        
+	        <!-- 도움말 모달 -->
+			<div id="modal_question" class="modal" style="display: none">
+				<div class="modal_title">도움말</div>				
+				<div class="modal_body">
+					<p class="question_content"><img src="/resources/images/boundary.png" class="question_img">　행정구역의 경계를 나타냅니다.</p>
+					<p class="question_content"><img src="/resources/images/course.png" class="question_img">　청소차의 이동경로를 나타냅니다.</p>
+					<p class="question_content"><img src="/resources/images/clean_o.png" class="question_img">　센서를 통해 측정된 값이 1500rpm 이상 80dB 이상으로, 　　 청소한 것으로 간주합니다.</p>
+					<p class="question_content"><img src="/resources/images/clean_x.png" class="question_img">　센서를 통해 측정된 값이 1500rpm 미만 80dB 미만으로, 　　 청소하지 않은 것으로 간주합니다.</p>					
+					<p class="question_content"><img src="/resources/images/beginPoint.png" class="question_img">　청소 시작 위치를 나타냅니다.</p>
+					<p class="question_content"><img src="/resources/images/endPoint.png" class="question_img">　청소 종료 위치를 나타냅니다.</p>
+		        </div>
+		        <div class="modal_foot">
+		            <button type="button" class="btn_modal_close">닫기</button>
+		        </div>
 	        </div>
 		</div>
 		

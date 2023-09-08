@@ -6,6 +6,10 @@ window.addEventListener("load", function(){
 	document.querySelector("#btn_addData").addEventListener("click", function() {
 		showModal("#modal_addData");
 	});
+	
+	document.querySelector("#btn_question").addEventListener("click", function() {
+		showModal("#modal_question");
+	});
 })
 
 function showModal(id){
