@@ -35,12 +35,12 @@ public class GisServiceImpl implements GisService{
 	}
 
 	@Override
-	public Map<String, Object> getCleanTimeRatio(String date, String car_num) {
+	public Map<String, Object> getCleanTimeRatio(String car_num, String date) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("cleanTimeRatio", gisMapper.getCleanTimeRatio(date, car_num));
+		map.put("cleanTimeRatio", gisMapper.getCleanTimeRatio(car_num, date));
 		
 		// 지도의 중심점으로 사용할 point 구하기
-		map.put("center", gisMapper.getCenter(date, car_num));
+		map.put("center", gisMapper.getCenter(car_num, date));
 		return map;
 	}
 
@@ -240,6 +240,14 @@ public class GisServiceImpl implements GisService{
 		
 		// points 테이블의 데이터를 course 테이블로 삽입
 		gisMapper.insertCourse();
+	}
+
+	@Override
+	public Map<String, Object> getChart(String car_num, String beginDate, String endDate) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("chart", gisMapper.getChart(car_num, beginDate, endDate));
+		return map;
 	}
 	
 }

@@ -1,13 +1,13 @@
 window.addEventListener("load", function(){
-	document.querySelector("#btn_addCar").addEventListener("click", function() {
+	btn_addCar.addEventListener("click", function() {
 		showModal("#modal_addCar");
 	});
 	
-	document.querySelector("#btn_addData").addEventListener("click", function() {
+	btn_addData.addEventListener("click", function() {
 		showModal("#modal_addData");
 	});
 	
-	document.querySelector("#btn_question").addEventListener("click", function() {
+	btn_question.addEventListener("click", function() {
 		showModal("#modal_question");
 	});
 })
@@ -32,10 +32,20 @@ function showModal(id){
 
     // 닫기 버튼 누르면 bg 레이어와 모달 div 닫기
     modal.querySelector(".btn_modal_close").addEventListener("click", function() {
+    	if(beginDate.value!=""){
+    		beginDate.value = "";
+    	}
+    	if(endDate.value!=""){
+    		endDate.value = "";
+    	}
+    	if(chart_bar.style.display=="block" && chart_polarArea.style.display=="block"){
+    		chart_bar.style.display = "none";
+    		chart_polarArea.style.display = "none";    		
+    	}
         bg.remove();
         modal.style.display = "none";
     });
-
+    
     modal.setStyle({
         position: "fixed",
         display: "block",

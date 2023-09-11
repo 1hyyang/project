@@ -11,8 +11,8 @@ public interface GisMapper {
 
 	public List<CarVO> getCarList();
 	public List<PointsVO> getDateList(String car_num);
-	public PointsVO getCleanTimeRatio(@Param("date") String date, @Param("car_num") String car_num);
-	public PointsVO getCenter(@Param("date") String date, @Param("car_num") String car_num);
+	public PointsVO getCleanTimeRatio(@Param("car_num") String car_num, @Param("date") String date);
+	public PointsVO getCenter(@Param("car_num") String car_num, @Param("date") String date);
 	public int insertCar(@Param("car_num") String car_num, @Param("car_type") String car_type);
 	public int insertData_gps(@Param("car_num") String car_num, @Param("date") String date, @Param("time") String time, @Param("longitude") String longitude, @Param("latitude") String latitude);
 	public int insertData_rpm(@Param("car_num") String car_num, @Param("date") String date, @Param("time") String time, @Param("rpm") int rpm);
@@ -23,5 +23,6 @@ public interface GisMapper {
 	public int deleteTemp_noise();
 	public int deleteCourse();
 	public int insertCourse();
+	public List<PointsVO> getChart(@Param("car_num") String car_num, @Param("beginDate") String beginDate, @Param("endDate") String endDate);
 	
 }

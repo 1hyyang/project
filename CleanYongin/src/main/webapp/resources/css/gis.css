@@ -81,6 +81,12 @@ html, body{
 	border-bottom: 1px solid lightgrey;
 	cursor: pointer;
 }
+#btn_chart{
+	font-size: 0.7em; 
+	color: #999;
+	float: right;
+	cursor: pointer;
+}
 .btn_circle_icon{
 	border: 1px solid lightgrey;
 	width: 28px;
@@ -255,6 +261,16 @@ input[type=file]::file-selector-button{
 	height: 30px;
 	cursor: pointer;	
 }
+input[type=date]{
+	border: 1px solid lightgrey;
+	border-radius: 5px;
+	margin: 5px;
+	width: 135px;
+	height: 30px;
+}
+canvas{
+	display: none; margin: 10px; width: 350px; 
+}
 .btn_modal_submit{
 	border: 1px solid #00aeba;
 	border-radius: 5px;
@@ -263,7 +279,7 @@ input[type=file]::file-selector-button{
 	cursor: pointer;
 	background-color: #00aeba; 
 	color: #fff;
-	margin-right: 3px;
+	margin: 0px 3px 0px 3px;
 }
 .btn_modal_close{
 	border: 1px solid #888;

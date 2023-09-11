@@ -32,8 +32,8 @@ public class GisController {
 	
 	@GetMapping("cleanTimeRatio")
 	@ResponseBody
-	public Map<String, Object> getCleanTimeRatio(String date, String car_num){
-		return gisService.getCleanTimeRatio(date, car_num);
+	public Map<String, Object> getCleanTimeRatio(String car_num, String date){
+		return gisService.getCleanTimeRatio(car_num, date);
 	}
 	
 	@GetMapping("addCar")
@@ -46,6 +46,12 @@ public class GisController {
 	public String addData(List<MultipartFile> file_gps, List<MultipartFile> file_rpm, List<MultipartFile> file_noise){
 		gisService.addData(file_gps, file_rpm, file_noise);
 		return "redirect:/gis";
+	}
+	
+	@GetMapping("chart")
+	@ResponseBody
+	public Map<String, Object> getChart(String car_num, String beginDate, String endDate){
+		return gisService.getChart(car_num, beginDate, endDate);
 	}
 	
 }

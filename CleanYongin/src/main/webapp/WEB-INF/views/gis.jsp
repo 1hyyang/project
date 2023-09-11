@@ -7,16 +7,18 @@
 <title>용인시 청소차 관제 시스템</title>
 <script src="https://openlayers.org/en/v5.3.0/build/ol.js"></script>
 <link rel="stylesheet" 	href="https://openlayers.org/en/v5.3.0/css/ol.css" type="text/css">
-<link rel="stylesheet" href="resources/css/gis.css" type="text/css">
+<link rel="stylesheet" href="/resources/css/gis.css" type="text/css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon-32x32.png">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
 <script src="https://kit.fontawesome.com/0aadd0de21.js" crossorigin="anonymous"></script>
-<script src="resources/js/gis_layer.js"></script>
-<script src="resources/js/gis_car.js"></script>
-<script src="resources/js/gis_modal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+<script src="/resources/js/gis_layer.js"></script>
+<script src="/resources/js/gis_car.js"></script>
+<script src="/resources/js/gis_modal.js"></script>
+<script src="/resources/js/gis_chart.js"></script>
 <script>
 window.addEventListener("load", function(){
 	// 차량목록에서 특정 차량을 선택하면
@@ -36,10 +38,10 @@ window.addEventListener("load", function(){
 			
 			// 차량 정보를 보여준다
 			selectedCar_info.style.display = "block";
-			selectedCar_num.innerHTML = `<i class="fa-solid fa-truck-front"></i> ` + selectedCar.innerText;
+			selectedCar_num.innerHTML = `<i class="fa-solid fa-truck-front" style="padding-left: 55px"></i> <span id="car_num">` + selectedCar.innerText + `</span><span id="btn_chart" style="margin-right: 5px">통계보기 &raquo;</span>`;
 			
 			// 선택 가능한 날짜를 불러온다
-			getDateList(selectedCar_num.innerText.trim());
+			getDateList(car_num.innerText);
 			
 		    // 기존의 clean_o, clean_x, beginPoint, endPoint, course 레이어를 삭제한다
 		    map.getLayers().getArray()
@@ -67,7 +69,16 @@ window.addEventListener("load", function(){
 		        center: ol.proj.transform([127.1775537, 37.2410864], "EPSG:4326", "EPSG:900913"),
 		        zoom: 11.5,
 		        duration: 800
-		    }); 
+		    });
+		    
+		    btn_chart.addEventListener("click", function() {
+				showModal("#modal_chart");
+				modal_chart_title.innerHTML = `<i class="fa-solid fa-truck-front"> <span style="font-family: 'Noto Sans KR', sans-serif">` + car_num.innerText + `</span>`;
+			});
+		    
+		    btn_modal_chart_submit.addEventListener("click", function() {
+				fetchGet("/chart?car_num=" + car_num.innerText + "&beginDate=" + beginDate.value + "&endDate=" + endDate.value, buildChart);
+			});
 		})
 	}
 })
@@ -226,6 +237,20 @@ window.addEventListener("load", function(){
 		        </div>
 		        <div class="modal_foot">
 		            <button type="button" class="btn_modal_close">닫기</button>
+		        </div>
+	        </div>
+	        
+	        <!-- 통계 모달 -->
+			<div id="modal_chart" class="modal" style="display: none">
+				<div class="modal_title" id="modal_chart_title"></div>				
+				<div class="modal_body">
+					<span class="info"><i class="fa-solid fa-circle-info"></i> 조회할 날짜를 선택하세요.</span><p></p>
+					<input type="date" id="beginDate" name="beginDate">~<input type="date" id="endDate" name="endDate"><button type="submit" id="btn_modal_chart_submit" class="btn_modal_submit">확인</button>
+			        <canvas id="chart_bar" style="height: 200px"></canvas>
+			        <canvas id="chart_polarArea" style="height: 250px"></canvas>
+		        </div>
+		        <div class="modal_foot">
+		            <button type="button" id="btn_modal_chart_close" class="btn_modal_close">닫기</button>
 		        </div>
 	        </div>
 		</div>

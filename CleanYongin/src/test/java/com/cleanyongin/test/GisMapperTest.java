@@ -27,6 +27,11 @@ public class GisMapperTest {
 
 	@Test
 	public void getCleanTimeRatio() {
-		System.out.println("==============" + gisMapper.getCleanTimeRatio("2023-09-05", "114하6585"));
+		System.out.println("==============" + gisMapper.getCleanTimeRatio("114하6585", "2023-09-05"));
+	}
+
+	@Test
+	public void getChart() {
+		System.out.println("==============" + gisMapper.getChart("114하6585", "2023-09-05", "2023-09-07"));
 	}
 }

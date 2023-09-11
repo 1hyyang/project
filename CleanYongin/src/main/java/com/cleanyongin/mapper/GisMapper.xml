@@ -12,16 +12,17 @@
   </select>
   
   <select id="getCleanTimeRatio" resultType="com.cleanyongin.vo.PointsVO">
-  	select 
-	    (select max(to_timestamp(time, 'HH24:MI:SS'))-min(to_timestamp(time, 'HH24:MI:SS')) from points where date = #{date} and car_num = #{car_num}) as time,	
-	round
-		((select count(*) from points where date = #{date} and car_num = #{car_num} and (noise>=80 and rpm>=1500)) 
-		* 100.0
-		/ (select count(*) from points where date = #{date} and car_num = #{car_num}), 2) as ratio
+  	select
+	  date,
+	  max(to_timestamp(time, 'HH24:MI:SS'))-min(to_timestamp(time, 'HH24:MI:SS')) as time,
+	  round((count(case when noise >= 80 and rpm >= 1500 then 1 end) * 100.0) / count(*), 2) as ratio
+	from points
+	where car_num = #{car_num} and date = #{date}
+	group by date
   </select>
   
   <select id="getCenter" resultType="com.cleanyongin.vo.PointsVO">
-  	select * from points where date = #{date} and car_num = #{car_num} order by time desc limit 1
+  	select * from points where car_num = #{car_num} and date = #{date} order by time desc limit 1
   </select>
   
   <insert id="insertCar">
@@ -79,4 +80,14 @@
 		from points
 		group by car_num, date
   </insert>
+  
+  <select id="getChart" resultType="com.cleanyongin.vo.PointsVO">
+  	select
+	  date,
+	  max(to_timestamp(time, 'HH24:MI:SS'))-min(to_timestamp(time, 'HH24:MI:SS')) as time,
+	  round((count(case when noise >= 80 and rpm >= 1500 then 1 end) * 100.0) / count(*), 2) as ratio
+	from points
+	where car_num = #{car_num} and date between #{beginDate} and #{endDate}
+	group by date
+  </select>
 </mapper>

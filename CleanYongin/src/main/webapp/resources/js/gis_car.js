@@ -70,13 +70,13 @@ function buildCalendar(result) {
 // 이전달 버튼 클릭
 function prevCalendar() {
 	nowMonth = new Date(nowMonth.getFullYear(), nowMonth.getMonth()-1, 1);   // 현재 달을 1 감소시키고 날짜는 1일로 설정
-	getDateList(selectedCar_num.innerText.trim());
+	getDateList(car_num.innerText);
 }
 
 // 다음달 버튼 클릭
 function nextCalendar() {
 	nowMonth = new Date(nowMonth.getFullYear(), nowMonth.getMonth()+1, 1);   // 현재 달을 1 증가시키고 날짜는 1일로 설정
-	getDateList(selectedCar_num.innerText.trim());
+	getDateList(car_num.innerText);
 }
 
 // 날짜 선택
@@ -107,7 +107,7 @@ function selectDate(nowColumn) {
 
     // 운행시간, 청소비율 구하기
     let selectedDay = calYear.innerText + "-" + leftPad(calMonth.innerText) + "-" + leftPad(document.getElementsByClassName("selectedDay")[0].innerText);
-    getCleanTimeRatio(selectedDay, selectedCar_num.innerText.trim());
+    getCleanTimeRatio(selectedDay, car_num.innerText);
 }
 
 function getCleanTimeRatio(date, car_num){
@@ -127,7 +127,7 @@ function showResult(result){
             params: {
                 'layers': 'geoserver:clean_o',
                 'tiled': 'true',
-                'viewparams': 'date:' + selectedDay + ';car_num:' + selectedCar_num.innerText.trim()
+                'viewparams': 'date:' + selectedDay + ';car_num:' + car_num.innerText
             },
             serverType: 'geoserver'
         }),
@@ -140,7 +140,7 @@ function showResult(result){
             params: {
                 'layers': 'geoserver:clean_x',
                 'tiled': 'true',
-                'viewparams': 'date:' + selectedDay + ';car_num:' + selectedCar_num.innerText.trim()
+                'viewparams': 'date:' + selectedDay + ';car_num:' + car_num.innerText
             },
             serverType: 'geoserver'
         }),
@@ -153,7 +153,7 @@ function showResult(result){
             params: {
                 'layers': 'geoserver:beginPoint',
                 'tiled': 'true',
-                'viewparams': 'date:' + selectedDay + ';car_num:' + selectedCar_num.innerText.trim()
+                'viewparams': 'date:' + selectedDay + ';car_num:' + car_num.innerText
             },
             serverType: 'geoserver'
         }),
@@ -166,7 +166,7 @@ function showResult(result){
             params: {
                 'layers': 'geoserver:endPoint',
                 'tiled': 'true',
-                'viewparams': 'date:' + selectedDay + ';car_num:' + selectedCar_num.innerText.trim()
+                'viewparams': 'date:' + selectedDay + ';car_num:' + car_num.innerText
             },
             serverType: 'geoserver'
         }),
@@ -179,7 +179,7 @@ function showResult(result){
             params: {
                 'layers': 'geoserver:course',
                 'tiled': 'true',
-                'viewparams': 'date:' + selectedDay + ';car_num:' + selectedCar_num.innerText.trim()
+                'viewparams': 'date:' + selectedDay + ';car_num:' + car_num.innerText
             },
             serverType: 'geoserver'
         }),
