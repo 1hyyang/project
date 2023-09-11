@@ -30,7 +30,7 @@ function showModal(id){
     });
     document.body.append(bg);
 
-    // 취소 버튼 누르면 bg 레이어와 모달 div 닫기
+    // 닫기 버튼 누르면 bg 레이어와 모달 div 닫기
     modal.querySelector(".btn_modal_close").addEventListener("click", function() {
         bg.remove();
         modal.style.display = "none";
