@@ -62,8 +62,15 @@ function buildChart(result) {
             responsive: false,
             scales: {
                 r: {
-                    suggestedMin: 0, // 최소값
-                    suggestedMax: 100 // 최대값
+                    suggestedMin: 0, 
+                    suggestedMax: 100,
+                    pointLabels: {
+	                    display: true,
+	                    centerPointLabels: true,
+	                    font: {
+	                      size: 12
+	                    }
+	                }
                 }
             },
             plugins: {

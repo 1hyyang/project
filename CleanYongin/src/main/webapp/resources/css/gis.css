@@ -268,8 +268,10 @@ input[type=date]{
 	width: 135px;
 	height: 30px;
 }
-canvas{
-	display: none; margin: 10px; width: 350px; 
+.chart{
+	display: none; 
+	margin: 10px auto; 
+	width: 300px; 
 }
 .btn_modal_submit{
 	border: 1px solid #00aeba;

@@ -246,8 +246,8 @@ window.addEventListener("load", function(){
 				<div class="modal_body">
 					<span class="info"><i class="fa-solid fa-circle-info"></i> 조회할 날짜를 선택하세요.</span><p></p>
 					<input type="date" id="beginDate" name="beginDate">~<input type="date" id="endDate" name="endDate"><button type="submit" id="btn_modal_chart_submit" class="btn_modal_submit">확인</button>
-			        <canvas id="chart_bar" style="height: 200px"></canvas>
-			        <canvas id="chart_polarArea" style="height: 250px"></canvas>
+			        <canvas id="chart_bar" class="chart" style="height: 200px"></canvas>
+			        <canvas id="chart_polarArea" class="chart" style="height: 250px"></canvas>
 		        </div>
 		        <div class="modal_foot">
 		            <button type="button" id="btn_modal_chart_close" class="btn_modal_close">닫기</button>
