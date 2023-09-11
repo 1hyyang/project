@@ -8,6 +8,14 @@ html, body{
 	padding: 40px;
 	background-color: #515555;
 }
+#btn_logout{
+	position: fixed;
+	top: 15px;
+	right: 15px;
+	color: lightgrey;
+	cursor: pointer;
+	font-size: 25px;
+}
 #container{
 	border: 5px solid ivory;
 	border-radius: 5px;

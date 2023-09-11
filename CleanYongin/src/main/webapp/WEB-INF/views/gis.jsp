@@ -85,6 +85,7 @@ window.addEventListener("load", function(){
 </script>
 </head>
 <body>
+	<i class="fa-solid fa-right-from-bracket" id="btn_logout"></i>
 	<div id="container">
 		<div id="controller">
 			<div id="title">
