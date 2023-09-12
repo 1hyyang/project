@@ -10,18 +10,31 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.cleanyongin.mapper.GisMapper;
+import com.cleanyongin.vo.UserVO;
 
 @Service
 public class GisServiceImpl implements GisService{
 
 	@Autowired
 	GisMapper gisMapper;
+
+	@Override
+	public Map<String, Object> login(UserVO user, HttpSession session) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("result", gisMapper.login(user));
+		if(map.get("result").equals(1)) {
+			session.setAttribute("id", user.getId());
+		}
+		return map;
+	}
 	
 	public void getCarList(Model model) {
 		model.addAttribute("carList", gisMapper.getCarList());

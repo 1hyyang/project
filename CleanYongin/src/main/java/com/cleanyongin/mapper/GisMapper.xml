@@ -3,6 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cleanyongin.mapper.GisMapper">
+  <select id="login" resultType="int">
+  	select count(*) from tbl_user where id = #{id} and pw = #{pw}
+  </select>
+  
   <select id="getCarList" resultType="com.cleanyongin.vo.CarVO">
   	select * from car
   </select>

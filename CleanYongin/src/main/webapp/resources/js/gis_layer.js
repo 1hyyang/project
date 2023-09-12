@@ -68,7 +68,8 @@ window.addEventListener("load", function(){
    				if(_this.className== "on tbl_content tbl_selected_hybrid"){
     				layer.setSource(null);
     				_this.className = "tbl_content";
-   				}else{
+   				}
+   				else{
    					_this.className = "on tbl_content tbl_selected_hybrid";
    					layer.setSource(VworldHybrid);
    				}
@@ -176,7 +177,8 @@ window.addEventListener("load", function(){
 	            zoom: 11,
 	            duration: 800
 	        });
-	    } else {
+	    } 
+	    else {
 	        btn_gu_cheoin.className = "tbl_content gu_selected";
 	        btn_gu_giheung.className = "tbl_content";
 	        btn_gu_suji.className = "tbl_content";
@@ -204,7 +206,8 @@ window.addEventListener("load", function(){
 	            zoom: 11,
 	            duration: 800
 	        });
-	    } else {
+	    } 
+	    else {
 	        btn_gu_cheoin.className = "tbl_content";
 	        btn_gu_giheung.className = "tbl_content gu_selected";
 	        btn_gu_suji.className = "tbl_content";
@@ -232,7 +235,8 @@ window.addEventListener("load", function(){
 	            zoom: 11,
 	            duration: 800
 	        });
-	    } else {
+	    } 
+	    else {
 	        btn_gu_cheoin.className = "tbl_content";
 	        btn_gu_giheung.className = "tbl_content";
 	        btn_gu_suji.className = "tbl_content gu_selected";

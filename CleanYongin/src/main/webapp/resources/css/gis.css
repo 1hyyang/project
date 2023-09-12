@@ -5,7 +5,8 @@
 }
 html, body{
 	height: 100%;
-	padding: 40px;
+	padding-top: 40px;
+    align-items: center;
 	background-color: #515555;
 }
 #btn_logout{

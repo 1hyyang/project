@@ -7,6 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.cleanyongin.mapper.GisMapper;
+import com.cleanyongin.vo.UserVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -14,6 +15,14 @@ public class GisMapperTest {
 
 	@Autowired
 	GisMapper gisMapper;
+	
+	@Test
+	public void login() {
+		UserVO user = new UserVO();
+		user.setId("admin");
+		user.setPw("rhksflwk");
+		System.out.println("==============" + gisMapper.login(user));
+	}
 	
 	@Test
 	public void getCarList() {

@@ -22,4 +22,14 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.cleanyongin.controller"></context:component-scan>
+	<context:component-scan base-package="com.cleanyongin.interceptor"></context:component-scan>
+	
+	<interceptors>
+		<!-- 로그인 체크 -->
+		<interceptor>
+			<mapping path="/gis" />
+			<!-- 클래스명 (앞글자 소문자) -->
+			<beans:ref bean="loginInterceptor" />
+		</interceptor>
+	</interceptors>
 </beans:beans>

@@ -6,9 +6,11 @@ import org.apache.ibatis.annotations.Param;
 
 import com.cleanyongin.vo.CarVO;
 import com.cleanyongin.vo.PointsVO;
+import com.cleanyongin.vo.UserVO;
 
 public interface GisMapper {
-
+	
+	public int login(UserVO user);
 	public List<CarVO> getCarList();
 	public List<PointsVO> getDateList(String car_num);
 	public PointsVO getCleanTimeRatio(@Param("car_num") String car_num, @Param("date") String date);

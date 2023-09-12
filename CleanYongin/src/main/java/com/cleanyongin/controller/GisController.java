@@ -3,21 +3,36 @@ package com.cleanyongin.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.cleanyongin.service.GisService;
+import com.cleanyongin.vo.UserVO;
 
 @Controller
 public class GisController {
 
 	@Autowired
 	GisService gisService;
+	
+	@GetMapping("login")
+	public void login() {
+		
+	}
+	
+	@PostMapping("loginAction")
+	@ResponseBody
+	public Map<String, Object> loginAction(@RequestBody UserVO user, HttpSession session) {
+		return gisService.login(user, session);
+	}
 	
 	@GetMapping("gis")
 	public void getCarList(Model model) {
