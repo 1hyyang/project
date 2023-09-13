@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS public.car
 (
     car_num character varying(15) COLLATE pg_catalog."default" NOT NULL,
     car_type character varying(20) COLLATE pg_catalog."default" NOT NULL,
-    car_area character varying(15) NOT NULL,
+    car_area character varying(15) COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT car_pkey PRIMARY KEY (car_num)
 );
 
@@ -16,6 +16,39 @@ CREATE TABLE IF NOT EXISTS public.course
     geom geometry NOT NULL,
     date character varying(20) COLLATE pg_catalog."default" NOT NULL,
     car_num character varying(15) COLLATE pg_catalog."default" NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS public.gu_cheoin
+(
+    id integer NOT NULL DEFAULT nextval('gu_cheoin_id_seq'::regclass),
+    geom geometry,
+    fid bigint,
+    "SIG_CD" character varying(5) COLLATE pg_catalog."default",
+    "SIG_ENG_NM" character varying(40) COLLATE pg_catalog."default",
+    "SIG_KOR_NM" character varying(40) COLLATE pg_catalog."default",
+    CONSTRAINT gu_cheoin_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS public.gu_giheung
+(
+    id integer NOT NULL DEFAULT nextval('gu_giheung_id_seq'::regclass),
+    geom geometry,
+    fid bigint,
+    "SIG_CD" character varying(5) COLLATE pg_catalog."default",
+    "SIG_ENG_NM" character varying(40) COLLATE pg_catalog."default",
+    "SIG_KOR_NM" character varying(40) COLLATE pg_catalog."default",
+    CONSTRAINT gu_giheung_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS public.gu_suji
+(
+    id integer NOT NULL DEFAULT nextval('gu_suji_id_seq'::regclass),
+    geom geometry,
+    fid bigint,
+    "SIG_CD" character varying(5) COLLATE pg_catalog."default",
+    "SIG_ENG_NM" character varying(40) COLLATE pg_catalog."default",
+    "SIG_KOR_NM" character varying(40) COLLATE pg_catalog."default",
+    CONSTRAINT gu_suji_pkey PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS public.points
@@ -28,6 +61,23 @@ CREATE TABLE IF NOT EXISTS public.points
     car_num character varying(15) COLLATE pg_catalog."default" NOT NULL,
     noise integer NOT NULL,
     rpm integer NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS public.si_yongin
+(
+    id integer NOT NULL DEFAULT nextval('si_yongin_id_seq'::regclass),
+    geom geometry,
+    sig_cd character varying(5) COLLATE pg_catalog."default",
+    sig_eng_nm character varying(40) COLLATE pg_catalog."default",
+    sig_kor_nm character varying(40) COLLATE pg_catalog."default",
+    CONSTRAINT si_yongin_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS public.tbl_user
+(
+    id character varying(20) COLLATE pg_catalog."default" NOT NULL,
+    pw character varying(20) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT user_pkey PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS public.temp_gps
@@ -56,13 +106,6 @@ CREATE TABLE IF NOT EXISTS public.temp_rpm
     "time" character varying(20) COLLATE pg_catalog."default" NOT NULL,
     rpm integer NOT NULL,
     CONSTRAINT rpm_pkey PRIMARY KEY (date, "time")
-);
-
-CREATE TABLE IF NOT EXISTS public.tbl_user
-(
-    id character varying(20) NOT NULL,
-    pw character varying(20) NOT NULL,
-    PRIMARY KEY (id)
 );
 
 ALTER TABLE IF EXISTS public.course
