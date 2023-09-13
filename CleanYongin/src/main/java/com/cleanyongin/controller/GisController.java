@@ -24,14 +24,25 @@ public class GisController {
 	GisService gisService;
 	
 	@GetMapping("login")
-	public void login() {
-		
+	public String login(HttpSession session) {
+		if(session.getAttribute("id")!=null && !session.getAttribute("id").toString().equals("")) {
+			return "redirect:/gis";
+		}
+		else {
+			return "/login";
+		}
 	}
 	
 	@PostMapping("loginAction")
 	@ResponseBody
 	public Map<String, Object> loginAction(@RequestBody UserVO user, HttpSession session) {
 		return gisService.login(user, session);
+	}
+	
+	@GetMapping("logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/login";
 	}
 	
 	@GetMapping("gis")

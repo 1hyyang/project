@@ -5,17 +5,16 @@
 }
 html, body{
 	height: 100%;
-	padding-top: 40px;
-    align-items: center;
+	padding-top: 33px;
 	background-color: #515555;
 }
 #btn_logout{
 	position: fixed;
-	top: 15px;
-	right: 15px;
-	color: lightgrey;
+	top: 18px;
+	right: 18px;	
+	width: 30px;
+	height: 30px;
 	cursor: pointer;
-	font-size: 25px;
 }
 #container{
 	border: 5px solid ivory;
@@ -147,7 +146,8 @@ html, body{
 	margin: 5px 0px 15px 0px;
 }
 .question_img{
-	width: 15px; height: 15px;
+	width: 15px; 
+	height: 15px;
 }
 .tbl_noSelect{
 	cursor: default;

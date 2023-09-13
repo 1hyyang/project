@@ -1,10 +1,7 @@
 window.addEventListener("load", function(){
-	btn_login.addEventListener("click", function(e){
-		// 기본 이벤트(새로고침) 제거
-		e.preventDefault();
-		
+	btn_login.addEventListener("click", function(){
 		// 파라미터 수집
-		let obj={
+		let obj = {
 			id: form_login_id.value, 
 			pw: form_login_pw.value 
 		};

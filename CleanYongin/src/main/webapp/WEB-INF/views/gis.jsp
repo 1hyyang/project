@@ -20,7 +20,11 @@
 <script src="/resources/js/gis_modal.js"></script>
 <script src="/resources/js/gis_chart.js"></script>
 <script>
-window.addEventListener("load", function(){
+window.addEventListener("load", function(){	
+	btn_logout.addEventListener("click", function(){
+		location.href = "/logout";
+	})
+	
 	// 차량목록에서 특정 차량을 선택하면
 	for(let i=0; i<${carList.size()}; i++){
 		let selectedCar = document.querySelector("#btn_car_" + i);		
@@ -85,7 +89,7 @@ window.addEventListener("load", function(){
 </script>
 </head>
 <body>
-	<i class="fa-solid fa-right-from-bracket" id="btn_logout"></i>
+	<img src="/resources/images/logout.png" id="btn_logout">
 	<div id="container">
 		<div id="controller">
 			<div id="title">
@@ -172,7 +176,7 @@ window.addEventListener("load", function(){
 				</table>
 			</div>
 			
-			<div style="position: absolute; top: 822px;">
+			<div style="position: absolute; top: 810px;">
 				<div id="btn_addCar" style="display: inline-block">
 					<div class="btn_circle_icon"><i class="fa-solid fa-plus"></i></div><span class="btn_circle_content">차량 추가</span>
 				</div>
