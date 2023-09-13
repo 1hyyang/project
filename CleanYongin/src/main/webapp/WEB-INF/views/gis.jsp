@@ -126,11 +126,13 @@
 						<input type="text" name="car_num" required>
 						<span class="info"><i class="fa-solid fa-circle-info"></i> 차량유형을 선택하세요.</span>
 						<select name="car_type" required>
-							<option value="진공노면청소">진공노면청소</option>
-							<option value="분진흡입">분진흡입</option>
+							<option value="" selected disabled>선택</option>
+							<option>진공노면청소</option>
+							<option>분진흡입</option>
 						</select>
 						<span class="info"><i class="fa-solid fa-circle-info"></i> 권역(구)을 선택하세요.</span>
 						<select name="car_area" required>
+							<option value="" selected disabled>선택</option>
 							<option value="gu_cheoin">처인구</option>
 							<option value="gu_giheung">기흥구</option>
 							<option value="gu_suji">수지구</option>
