@@ -75,7 +75,7 @@ function selectDate(nowColumn) {
     // 기존의 레이어 삭제
     deleteLayers();
 
-    // 운행시간, 청소비율 구하기
+    // 운행시간/청소비율 구하기, 포인트 및 경로 레이어 추가
     let selectedDay = calYear.innerText + "-" + leftPad(calMonth.innerText) + "-" + leftPad(document.getElementsByClassName("selectedDay")[0].innerText);
     getCleanTimeRatio(selectedDay, car_num.innerText);
 }
@@ -104,7 +104,7 @@ function getCleanTimeRatio(date, car_num){
 }
 
 function showCleanTimeRatio(result){
-	// 운행시간, 청소비율 띄우기
+	// 운행시간/청소비율 띄우기
 	clean_time.innerText = result.cleanTimeRatio.time;
 	clean_ratio.innerText = result.cleanTimeRatio.ratio + "%";	
     
@@ -195,7 +195,7 @@ function showCleanTimeRatio(result){
     // 중심 좌표 이동
     map.getView().animate({
         center: ol.proj.transform([parseFloat(result.center.lon), parseFloat(result.center.lat)], 'EPSG:4326', 'EPSG:900913'),
-        zoom: 14,
+        zoom: 15,
         duration: 800
     }); 
 }
