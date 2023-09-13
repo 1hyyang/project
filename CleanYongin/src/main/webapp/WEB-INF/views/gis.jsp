@@ -21,7 +21,9 @@
 <script src="/resources/js/gis_chart.js"></script>
 </head>
 <body>
+	<!-- 로그아웃 버튼 -->
 	<img src="/resources/images/logout.png" id="btn_logout">
+	
 	<div id="container">
 		<div id="controller">
 			<div id="title">
@@ -33,7 +35,7 @@
 				</div>			
 			</div>
 			
-			<!-- gis_layer.js -->
+			<!-- 지도 종류 -->
 			<table class="tbl">
 				<tr>
 					<th class="tbl_title tbl_noSelect">지도종류</th>
@@ -43,6 +45,7 @@
 				</tr>
 			</table>
 
+			<!-- 권역(구) -->
 			<table class="tbl">
 				<tr>
 					<th class="tbl_title tbl_noSelect">권역(구)</th>
@@ -52,9 +55,10 @@
 				</tr>
 			</table>
 
-			<!-- gis_car.js -->
+			<!-- 차량 목록 -->
 			<table class="tbl" id="tbl_carlist"></table>
-						
+			
+			<!-- 차량 정보 -->
 			<div id="selectedCar_info" style="display: none">
 				<table class="tbl">
 					<tr>
@@ -98,6 +102,7 @@
 				</table>
 			</div>
 			
+			<!-- 차량 추가/데이터 추가/도움말 버튼 -->
 			<div style="position: absolute; top: 847px;">
 				<div id="btn_addCar" style="display: inline-block">
 					<div class="btn_circle_icon"><i class="fa-solid fa-plus"></i></div><span class="btn_circle_content">차량 추가</span>
@@ -188,6 +193,7 @@
 	        </div>
 		</div>
 		
+		<!-- 지도 -->
 		<div id="map"></div>
 	</div>
 </body>
