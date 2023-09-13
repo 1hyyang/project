@@ -15,10 +15,11 @@ import com.cleanyongin.vo.UserVO;
 public interface GisService {
 	
 	public Map<String, Object> login(UserVO user, HttpSession session);
-	public void getCarList(Model model);
+	public Map<String, Object> getCarListAll();
+	public Map<String, Object> getCarList(String car_area);
 	public Map<String, Object> getDateList(String car_num);
 	public Map<String, Object> getCleanTimeRatio(String car_num, String date);
-	public void addCar(String car_num, String car_type);
+	public void addCar(String car_num, String car_type, String car_area);
 	public void addData(List<MultipartFile> file_gps, List<MultipartFile> file_rpm, List<MultipartFile> file_noise);
 	public Map<String, Object> getChart(String car_num, String beginDate, String endDate);
 	

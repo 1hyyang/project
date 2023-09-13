@@ -7,8 +7,12 @@
   	select count(*) from tbl_user where id = #{id} and pw = #{pw}
   </select>
   
-  <select id="getCarList" resultType="com.cleanyongin.vo.CarVO">
+  <select id="getCarListAll" resultType="com.cleanyongin.vo.CarVO">
   	select * from car
+  </select>
+  
+  <select id="getCarList" resultType="com.cleanyongin.vo.CarVO">
+  	select * from car where car_area = #{car_area}
   </select>
  
   <select id="getDateList" resultType="com.cleanyongin.vo.PointsVO">
@@ -30,7 +34,7 @@
   </select>
   
   <insert id="insertCar">
-  	insert into car (car_num, car_type) values (#{car_num}, #{car_type})
+  	insert into car (car_num, car_type, car_area) values (#{car_num}, #{car_type}, #{car_area})
   </insert>
   
   <insert id="insertData_gps">

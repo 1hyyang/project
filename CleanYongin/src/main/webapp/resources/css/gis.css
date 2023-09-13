@@ -5,13 +5,13 @@
 }
 html, body{
 	height: 100%;
-	padding-top: 33px;
+	padding-top: 30px;
 	background-color: #515555;
 }
 #btn_logout{
 	position: fixed;
-	top: 18px;
-	right: 18px;	
+	top: 15px;
+	right: 15px;	
 	width: 30px;
 	height: 30px;
 	box-shadow: 2px 2px 2px grey;
@@ -22,7 +22,7 @@ html, body{
 	border: 5px solid ivory;
 	border-radius: 5px;
 	width: 1400px; 
-	height: 795px;
+	height: 840px;
 	background-color: ivory;
 }
 #controller{
@@ -246,7 +246,7 @@ html, body{
 	padding: 10px;
 	float: right;
 }
-input[name=car_num], select[name=car_type]{
+input[name=car_num], select[name=car_type], select[name=car_area]{
 	border: 1px solid lightgrey;
 	border-radius: 5px;
 	margin: 5px;

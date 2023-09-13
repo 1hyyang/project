@@ -26,7 +26,7 @@ public class GisMapperTest {
 	
 	@Test
 	public void getCarList() {
-		System.out.println("==============" + gisMapper.getCarList());
+		System.out.println("==============" + gisMapper.getCarListAll());
 	}
 	
 	@Test

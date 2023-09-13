@@ -15,78 +15,10 @@
 <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
 <script src="https://kit.fontawesome.com/0aadd0de21.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
-<script src="/resources/js/gis_layer.js"></script>
-<script src="/resources/js/gis_car.js"></script>
+<script src="/resources/js/gis.js"></script>
+<script src="/resources/js/gis_carInfo.js"></script>
 <script src="/resources/js/gis_modal.js"></script>
 <script src="/resources/js/gis_chart.js"></script>
-<script>
-window.addEventListener("load", function(){	
-	btn_logout.addEventListener("click", function(){
-		location.href = "/logout";
-	})
-	
-	// 차량목록에서 특정 차량을 선택하면
-	for(let i=0; i<${carList.size()}; i++){
-		let selectedCar = document.querySelector("#btn_car_" + i);		
-		selectedCar.addEventListener("click", function(){
-			// 모든 차량목록의 배경색을 흰색으로 바꾼다
-			let car = document.getElementsByClassName("tbl_carlist_content");
-			for(let j=0; j<car.length; j++){
-				car[j].style.background = "white";
-				car[j].style.color = "black";
-			}
-			
-			// 차량목록 중 선택한 차량의 배경색을 남색으로 바꾼다
-			selectedCar.style.background = "#0054a7";
-			selectedCar.style.color = "white";
-			
-			// 차량 정보를 보여준다
-			selectedCar_info.style.display = "block";
-			selectedCar_num.innerHTML = `<i class="fa-solid fa-truck-front" style="padding-left: 55px"></i> <span id="car_num">` + selectedCar.innerText + `</span><span id="btn_chart" style="margin-right: 5px">통계보기 &raquo;</span>`;
-			
-			// 선택 가능한 날짜를 불러온다
-			getDateList(car_num.innerText);
-			
-		    // 기존의 clean_o, clean_x, beginPoint, endPoint, course 레이어를 삭제한다
-		    map.getLayers().getArray()
-			  .filter(layer => layer.get("name")==="clean_o")
-			  .forEach(layer => map.removeLayer(layer));    
-		    map.getLayers().getArray()
-			  .filter(layer => layer.get("name")==="clean_x")
-			  .forEach(layer => map.removeLayer(layer));
-		    map.getLayers().getArray()
-			  .filter(layer => layer.get("name")==="beginPoint")
-			  .forEach(layer => map.removeLayer(layer));
-		    map.getLayers().getArray()
-			  .filter(layer => layer.get("name")==="endPoint")
-			  .forEach(layer => map.removeLayer(layer));
-		    map.getLayers().getArray()
-			  .filter(layer => layer.get("name")==="course")
-			  .forEach(layer => map.removeLayer(layer));
-		    
-			// 기존의 운행시간, 청소비율을 삭제한다
-			clean_time.innerText = "";
-			clean_ratio.innerText = "";			
-
-		    // 줌아웃하고 중심 좌표를 이동한다
-		    map.getView().animate({
-		        center: ol.proj.transform([127.1775537, 37.2410864], "EPSG:4326", "EPSG:900913"),
-		        zoom: 11.5,
-		        duration: 800
-		    });
-		    
-		    btn_chart.addEventListener("click", function() {
-				showModal("#modal_chart");
-				modal_chart_title.innerHTML = `<i class="fa-solid fa-truck-front"> <span style="font-family: 'Noto Sans KR', sans-serif">` + car_num.innerText + `</span>`;
-			});
-		    
-		    btn_modal_chart_submit.addEventListener("click", function() {
-				fetchGet("/chart?car_num=" + car_num.innerText + "&beginDate=" + beginDate.value + "&endDate=" + endDate.value, buildChart);
-			});
-		})
-	}
-})
-</script>
 </head>
 <body>
 	<img src="/resources/images/logout.png" id="btn_logout">
@@ -121,17 +53,7 @@ window.addEventListener("load", function(){
 			</table>
 
 			<!-- gis_car.js -->
-			<table class="tbl" id="tbl_carlist">		
-				<tr>
-					<th rowspan="3" class="tbl_carlist_title tbl_noSelect">차량</th>
-					<td class="tbl_carlist_content" id="btn_car_0">${carList[0].car_num}</td>
-				</tr>
-				<c:forEach begin="1" items="${carList}" var="carList" varStatus="loop">
-				<tr>
-					<td class="tbl_carlist_content" id="btn_car_${loop.index}">${carList.car_num}</td>					
-				</tr>
-				</c:forEach>
-			</table>
+			<table class="tbl" id="tbl_carlist"></table>
 						
 			<div id="selectedCar_info" style="display: none">
 				<table class="tbl">
@@ -176,7 +98,7 @@ window.addEventListener("load", function(){
 				</table>
 			</div>
 			
-			<div style="position: absolute; top: 810px;">
+			<div style="position: absolute; top: 847px;">
 				<div id="btn_addCar" style="display: inline-block">
 					<div class="btn_circle_icon"><i class="fa-solid fa-plus"></i></div><span class="btn_circle_content">차량 추가</span>
 				</div>
@@ -201,6 +123,12 @@ window.addEventListener("load", function(){
 						<select name="car_type" required>
 							<option value="진공노면청소">진공노면청소</option>
 							<option value="분진흡입">분진흡입</option>
+						</select>
+						<span class="info"><i class="fa-solid fa-circle-info"></i> 권역(구)을 선택하세요.</span>
+						<select name="car_area" required>
+							<option value="gu_cheoin">처인구</option>
+							<option value="gu_giheung">기흥구</option>
+							<option value="gu_suji">수지구</option>
 						</select>
 			        </div>
 			        <div class="modal_foot">

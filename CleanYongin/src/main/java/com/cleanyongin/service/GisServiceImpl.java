@@ -36,8 +36,17 @@ public class GisServiceImpl implements GisService{
 		return map;
 	}
 	
-	public void getCarList(Model model) {
-		model.addAttribute("carList", gisMapper.getCarList());
+	public Map<String, Object> getCarListAll() {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("carListAll", gisMapper.getCarListAll());
+		return map;
+	}
+
+	@Override
+	public Map<String, Object> getCarList(String car_area) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("carList", gisMapper.getCarList(car_area));
+		return map;
 	}
 	
 	@Override
@@ -58,8 +67,8 @@ public class GisServiceImpl implements GisService{
 	}
 
 	@Override
-	public void addCar(String car_num, String car_type) {
-		gisMapper.insertCar(car_num, car_type);		
+	public void addCar(String car_num, String car_type, String car_area) {
+		gisMapper.insertCar(car_num, car_type, car_area);		
 	}
 
 	@Override
@@ -257,8 +266,7 @@ public class GisServiceImpl implements GisService{
 
 	@Override
 	public Map<String, Object> getChart(String car_num, String beginDate, String endDate) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		
+		Map<String, Object> map = new HashMap<String, Object>();		
 		map.put("chart", gisMapper.getChart(car_num, beginDate, endDate));
 		return map;
 	}

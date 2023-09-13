@@ -46,8 +46,20 @@ public class GisController {
 	}
 	
 	@GetMapping("gis")
-	public void getCarList(Model model) {
-		gisService.getCarList(model);
+	public void gis() {
+		
+	}
+	
+	@GetMapping("carListAll")
+	@ResponseBody
+	public Map<String, Object> getCarListAll() {
+		return gisService.getCarListAll();
+	}
+	
+	@GetMapping("carList")
+	@ResponseBody
+	public Map<String, Object> getCarList(String car_area){
+		return gisService.getCarList(car_area);
 	}
 	
 	@GetMapping("dateList")
@@ -63,8 +75,8 @@ public class GisController {
 	}
 	
 	@GetMapping("addCar")
-	public String addCar(String car_num, String car_type) {
-		gisService.addCar(car_num, car_type);
+	public String addCar(String car_num, String car_type, String car_area) {
+		gisService.addCar(car_num, car_type, car_area);
 		return "redirect:/gis";
 	}
 	

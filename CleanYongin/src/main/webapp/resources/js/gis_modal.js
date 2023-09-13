@@ -16,7 +16,7 @@ function showModal(id){
 	let zIndex = 999;
 	let modal = document.querySelector(id);
 
-    // 모달 div 뒤 bg 레이어
+    // 모달 div 뒤 bg 레이어 정의
 	let bg = document.createElement("div");
     bg.setStyle({
         position: "fixed",
@@ -30,7 +30,7 @@ function showModal(id){
     });
     document.body.append(bg);
 
-    // 닫기 버튼 누르면 bg 레이어와 모달 div 닫기
+    // 닫기 버튼 클릭하면 bg 레이어와 모달 div 닫기
     modal.querySelector(".btn_modal_close").addEventListener("click", function() {
     	if(beginDate.value!=""){
     		beginDate.value = "";
@@ -51,7 +51,7 @@ function showModal(id){
         display: "block",
         boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2)",
 
-        // bg 레이어 보다 한칸 위에 보이기
+        // bg 레이어 보다 한 칸 위에 보이기
         zIndex: zIndex+1,
 
         // div 가운데 정렬
