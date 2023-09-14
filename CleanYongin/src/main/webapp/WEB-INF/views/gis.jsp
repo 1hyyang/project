@@ -171,7 +171,7 @@
 					<p class="question_content"><img src="/resources/images/boundary.png" class="question_img">　행정구역의 경계를 나타냅니다.</p>
 					<p class="question_content"><img src="/resources/images/course.png" class="question_img">　청소차의 이동경로를 나타냅니다.</p>
 					<p class="question_content"><img src="/resources/images/clean_o.png" class="question_img">　센서를 통해 측정된 값이 1500rpm 이상 80dB 이상으로, 　　 청소한 것으로 간주합니다.</p>
-					<p class="question_content"><img src="/resources/images/clean_x.png" class="question_img">　센서를 통해 측정된 값이 1500rpm 미만 80dB 미만으로, 　　 청소하지 않은 것으로 간주합니다.</p>					
+					<p class="question_content"><img src="/resources/images/clean_x.png" class="question_img">　센서를 통해 측정된 값이 1500rpm 미만 또는 80dB 미만으로, 　　 청소하지 않은 것으로 간주합니다.</p>					
 					<p class="question_content"><img src="/resources/images/beginPoint.png" class="question_img">　청소 시작 위치를 나타냅니다.</p>
 					<p class="question_content"><img src="/resources/images/endPoint.png" class="question_img">　청소 종료 위치를 나타냅니다.</p>
 		        </div>
