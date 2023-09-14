@@ -143,7 +143,7 @@
 			            <button type="button" class="btn_modal_close">닫기</button>
 			        </div>
 			    </form>
-	        </div>
+			</div>
 	        
 			<!-- 데이터 추가 모달 -->
 			<div id="modal_addData" class="modal" style="display: none">
@@ -162,7 +162,7 @@
 			            <button type="button" class="btn_modal_close">닫기</button>
 			        </div>
 			    </form>
-	        </div>
+			</div>
 	        
 	        <!-- 도움말 모달 -->
 			<div id="modal_question" class="modal" style="display: none">
@@ -178,7 +178,7 @@
 		        <div class="modal_foot">
 		            <button type="button" class="btn_modal_close">닫기</button>
 		        </div>
-	        </div>
+			</div>
 	        
 	        <!-- 통계 모달 -->
 			<div id="modal_chart" class="modal" style="display: none">
@@ -192,7 +192,7 @@
 		        <div class="modal_foot">
 		            <button type="button" id="btn_modal_chart_close" class="btn_modal_close">닫기</button>
 		        </div>
-	        </div>
+			</div>
 		</div>
 		
 		<!-- 지도 -->
