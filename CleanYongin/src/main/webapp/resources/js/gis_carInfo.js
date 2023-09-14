@@ -112,67 +112,67 @@ function showCleanTimeRatio(result){
 	let selectedDay = calYear.innerText + "-" + leftPad(calMonth.innerText) + "-" + leftPad(document.getElementsByClassName("selectedDay")[0].innerText);
 	var clean_o = new ol.layer.Tile({
         source: new ol.source.TileWMS({
-            url: 'http://localhost:8080/geoserver/wms',
+            url: "http://localhost:8080/geoserver/wms",
             params: {
-                'layers': 'geoserver:clean_o',
-                'tiled': 'true',
-                'viewparams': 'date:' + selectedDay + ';car_num:' + car_num.innerText
+                "layers": "geoserver:clean_o",
+                "tiled": "true",
+                "viewparams": "date:" + selectedDay + ";car_num:" + car_num.innerText
             },
-            serverType: 'geoserver'
+            serverType: "geoserver"
         }),
-        name: 'clean_o'
+        name: "clean_o"
     });
     
     var clean_x = new ol.layer.Tile({
         source: new ol.source.TileWMS({
-            url: 'http://localhost:8080/geoserver/wms',
+            url: "http://localhost:8080/geoserver/wms",
             params: {
-                'layers': 'geoserver:clean_x',
-                'tiled': 'true',
-                'viewparams': 'date:' + selectedDay + ';car_num:' + car_num.innerText
+                "layers": "geoserver:clean_x",
+                "tiled": "true",
+                "viewparams": "date:" + selectedDay + ";car_num:" + car_num.innerText
             },
-            serverType: 'geoserver'
+            serverType: "geoserver"
         }),
-        name: 'clean_x'
+        name: "clean_x"
     });	
     
     var beginPoint = new ol.layer.Tile({
         source: new ol.source.TileWMS({
-            url: 'http://localhost:8080/geoserver/wms',
+            url: "http://localhost:8080/geoserver/wms",
             params: {
-                'layers': 'geoserver:beginPoint',
-                'tiled': 'true',
-                'viewparams': 'date:' + selectedDay + ';car_num:' + car_num.innerText
+                "layers": "geoserver:beginPoint",
+                "tiled": "true",
+                "viewparams": "date:" + selectedDay + ";car_num:" + car_num.innerText
             },
-            serverType: 'geoserver'
+            serverType: "geoserver"
         }),
-        name: 'beginPoint'
+        name: "beginPoint"
     }); 
     
     var endPoint = new ol.layer.Tile({
         source: new ol.source.TileWMS({
-            url: 'http://localhost:8080/geoserver/wms',
+            url: "http://localhost:8080/geoserver/wms",
             params: {
-                'layers': 'geoserver:endPoint',
-                'tiled': 'true',
-                'viewparams': 'date:' + selectedDay + ';car_num:' + car_num.innerText
+                "layers": "geoserver:endPoint",
+                "tiled": "true",
+                "viewparams": "date:" + selectedDay + ";car_num:" + car_num.innerText
             },
-            serverType: 'geoserver'
+            serverType: "geoserver"
         }),
-        name: 'endPoint'
+        name: "endPoint"
     }); 
     
     var course = new ol.layer.Tile({
         source: new ol.source.TileWMS({
-            url: 'http://localhost:8080/geoserver/wms',
+            url: "http://localhost:8080/geoserver/wms",
             params: {
-                'layers': 'geoserver:course',
-                'tiled': 'true',
-                'viewparams': 'date:' + selectedDay + ';car_num:' + car_num.innerText
+                "layers": "geoserver:course",
+                "tiled": "true",
+                "viewparams": "date:" + selectedDay + ";car_num:" + car_num.innerText
             },
-            serverType: 'geoserver'
+            serverType: "geoserver"
         }),
-        name: 'course'
+        name: "course"
     });   
     
     // 경로 레이어 추가
@@ -194,7 +194,7 @@ function showCleanTimeRatio(result){
 	
     // 중심 좌표 이동
     map.getView().animate({
-        center: ol.proj.transform([parseFloat(result.center.lon), parseFloat(result.center.lat)], 'EPSG:4326', 'EPSG:900913'),
+        center: ol.proj.transform([parseFloat(result.center.lon), parseFloat(result.center.lat)], "EPSG:4326", "EPSG:900913"),
         zoom: 15,
         duration: 800
     }); 

@@ -31,8 +31,8 @@ window.addEventListener("load", function(){
 	hybrid_button.className= "on";
 	var sate_button = document.createElement("button");
 	sate_button.innerHTML = "S";
-    var element = document.createElement("div");
-    element.className = "rotate-north ol-unselectable ol-control ol-mycontrol";
+	var element = document.createElement("div");
+	element.className = "rotate-north ol-unselectable ol-control ol-mycontrol";
 	
 	btn_base.onclick = function(){
 		var _this = this;
@@ -42,8 +42,8 @@ window.addEventListener("load", function(){
 				_this.className = "tbl_content tbl_selected";
 				layer.setSource(VworldBase);
 			}
-	    })
-    }    
+        })
+	}    
 	
 	btn_satellite.onclick = function(){
 		var _this = this;
@@ -53,8 +53,8 @@ window.addEventListener("load", function(){
 				_this.className = "tbl_content tbl_selected";
 				layer.setSource(VworldSatellite);
 			}
-	    })
-    }
+        })
+	}
 	
 	btn_hybrid.onclick = function(){
     	var _this = this;
@@ -69,8 +69,8 @@ window.addEventListener("load", function(){
    					layer.setSource(VworldHybrid);
    				}
    			}
-   	    })
-    }
+   		})
+	}
     
     element.appendChild(base_button);
     element.appendChild(sate_button);
@@ -86,7 +86,7 @@ window.addEventListener("load", function(){
 			new ol.layer.Tile({
 				source: VworldBase,
 				name:"vworld"
-			}),new ol.layer.Tile({
+			}), new ol.layer.Tile({
 				source: VworldHybrid,
 				name:"hybrid"
 			})
@@ -105,24 +105,24 @@ window.addEventListener("load", function(){
 
 	// 용인시 레이어 정의
 	var si_yongin = new ol.layer.Tile({
-        source: new ol.source.TileWMS({
-            url: "http://localhost:8080/geoserver/wms",
-            params: {
-            "layers" : "geoserver:si_yongin",
-            "tiled" : "true"
-            },
-            serverType: "geoserver"            
-        }),
+		source: new ol.source.TileWMS({
+			url: "http://localhost:8080/geoserver/wms",
+			params: {
+				"layers" : "geoserver:si_yongin",
+				"tiled" : "true"
+			},
+			serverType: "geoserver"            
+		}),
 		name: "si_yongin"
-    })
+	})
 
 	// 처인구 레이어 정의
     var gu_cheoin = new ol.layer.Tile({
         source: new ol.source.TileWMS({
             url: "http://localhost:8080/geoserver/wms",
             params: {
-            "layers" : "geoserver:gu_cheoin",
-            "tiled" : "true"
+            	"layers" : "geoserver:gu_cheoin",
+            	"tiled" : "true"
             },
             serverType: "geoserver"
         }),
@@ -134,8 +134,8 @@ window.addEventListener("load", function(){
         source: new ol.source.TileWMS({
             url: "http://localhost:8080/geoserver/wms",
             params: {
-            "layers" : "geoserver:gu_giheung",
-            "tiled" : "true"
+            	"layers" : "geoserver:gu_giheung",
+            	"tiled" : "true"
             },
             serverType: "geoserver"
         }),
@@ -144,16 +144,16 @@ window.addEventListener("load", function(){
 
 	// 수지구 레이어 정의
 	var gu_suji = new ol.layer.Tile({
-        source: new ol.source.TileWMS({
-            url: "http://localhost:8080/geoserver/wms",
-            params: {
-            "layers" : "geoserver:gu_suji",
-            "tiled" : "true"
-            },
-            serverType: "geoserver"
-        }),
-        name: "gu_suji"
-    })
+		source: new ol.source.TileWMS({
+			url: "http://localhost:8080/geoserver/wms",
+			params: {
+				"layers" : "geoserver:gu_suji",
+				"tiled" : "true"
+			},
+			serverType: "geoserver"
+		}),
+		name: "gu_suji"
+	})
     
 	// 용인시 레이어 추가
     map.addLayer(si_yongin);
@@ -161,153 +161,153 @@ window.addEventListener("load", function(){
 	// 처인구 버튼을 클릭하면
 	btn_gu_cheoin.onclick = function() {
 		// 이미 선택되어 있으면 선택 해제하고 용인시 레이어 보여주기
-	    if(btn_gu_cheoin.className==="tbl_content gu_selected") {
-	        btn_gu_cheoin.className = "tbl_content";
-	        map.addLayer(si_yongin);
-	        map.removeLayer(gu_cheoin);
-	        map.removeLayer(gu_giheung);
-	        map.removeLayer(gu_suji);
-	        map.getView().animate({
-	            center: ol.proj.transform([127.1775537, 37.2410864], "EPSG:4326", "EPSG:900913"),
-	            zoom: 11,
-	            duration: 800
-	        });
+		if(btn_gu_cheoin.className==="tbl_content gu_selected") {
+			btn_gu_cheoin.className = "tbl_content";
+			map.addLayer(si_yongin);
+			map.removeLayer(gu_cheoin);
+			map.removeLayer(gu_giheung);
+			map.removeLayer(gu_suji);
+			map.getView().animate({
+				center: ol.proj.transform([127.1775537, 37.2410864], "EPSG:4326", "EPSG:900913"),
+				zoom: 11,
+				duration: 800
+			});
 	        
-	        // 차량 목록 전체 불러오기
-	    	fetchGet("/carListAll", showCarListAll);
+			// 차량 목록 전체 불러오기
+			fetchGet("/carListAll", showCarListAll);
 	    	
-	    	// 차량 정보를 안 보이게
-	    	selectedCar_info.style.display = "none";
+			// 차량 정보를 안 보이게
+			selectedCar_info.style.display = "none";
 	    	
-	    	// 기존의 레이어 삭제
-	        deleteLayers();
-	    }
+			// 기존의 레이어 삭제
+			deleteLayers();
+		}
 	    
-	    // 선택되어 있지 않으면 처인구 선택
-	    else{
-	        btn_gu_cheoin.className = "tbl_content gu_selected";
-	        btn_gu_giheung.className = "tbl_content";
-	        btn_gu_suji.className = "tbl_content";
-	        map.removeLayer(si_yongin);
-	        map.addLayer(gu_cheoin);
-	        map.removeLayer(gu_giheung);
-	        map.removeLayer(gu_suji);
-	        map.getView().animate({
-	            center: ol.proj.transform([127.2529331499, 37.2033318957], "EPSG:4326", "EPSG:900913"),
-	            zoom: 11.5,
-	            duration: 800
-	        });
+		// 선택되어 있지 않으면 처인구 선택
+		else{
+			btn_gu_cheoin.className = "tbl_content gu_selected";
+			btn_gu_giheung.className = "tbl_content";
+			btn_gu_suji.className = "tbl_content";
+			map.removeLayer(si_yongin);
+			map.addLayer(gu_cheoin);
+			map.removeLayer(gu_giheung);
+			map.removeLayer(gu_suji);
+			map.getView().animate({
+				center: ol.proj.transform([127.2529331499, 37.2033318957], "EPSG:4326", "EPSG:900913"),
+				zoom: 11.5,
+				duration: 800
+			});
 	        
-	        // 처인구 소속 차량 불러오기
-	        fetchGet("/carList?car_area=gu_cheoin", showCarList);
+			// 처인구 소속 차량 불러오기
+			fetchGet("/carList?car_area=gu_cheoin", showCarList);
 	        
-	        // 차량 정보를 안 보이게
-	    	selectedCar_info.style.display = "none";
+			// 차량 정보를 안 보이게
+			selectedCar_info.style.display = "none";
 	    	
-	    	// 기존의 레이어 삭제
-	        deleteLayers();
-	    }
+			// 기존의 레이어 삭제
+			deleteLayers();
+		}
 	}
 
 	// 기흥구 버튼을 클릭하면
 	btn_gu_giheung.onclick = function() {
 		// 이미 선택되어 있으면 선택 해제하고 용인시 레이어 보여주기
-	    if(btn_gu_giheung.className==="tbl_content gu_selected") {
-	        btn_gu_giheung.className = "tbl_content";
-	        map.addLayer(si_yongin);
-	        map.removeLayer(gu_cheoin);
-	        map.removeLayer(gu_giheung);
-	        map.removeLayer(gu_suji);
-	        map.getView().animate({
-	            center: ol.proj.transform([127.1775537, 37.2410864], "EPSG:4326", "EPSG:900913"),
-	            zoom: 11,
-	            duration: 800
-	        });
+		if(btn_gu_giheung.className==="tbl_content gu_selected") {
+			btn_gu_giheung.className = "tbl_content";
+			map.addLayer(si_yongin);
+			map.removeLayer(gu_cheoin);
+			map.removeLayer(gu_giheung);
+			map.removeLayer(gu_suji);
+			map.getView().animate({
+				center: ol.proj.transform([127.1775537, 37.2410864], "EPSG:4326", "EPSG:900913"),
+				zoom: 11,
+				duration: 800
+			});
 	        
-	        // 차량 목록 전체 불러오기
-	    	fetchGet("/carListAll", showCarListAll);
+			// 차량 목록 전체 불러오기
+			fetchGet("/carListAll", showCarListAll);
 	    	
-	    	// 차량 정보를 안 보이게
-	    	selectedCar_info.style.display = "none";
+			// 차량 정보를 안 보이게
+			selectedCar_info.style.display = "none";
 	    	
-	    	// 기존의 레이어 삭제
-	        deleteLayers();
-	    }
+			// 기존의 레이어 삭제
+			deleteLayers();
+		}
 	    
-	    // 선택되어 있지 않으면 기흥구 선택
-	    else{
-	        btn_gu_cheoin.className = "tbl_content";
-	        btn_gu_giheung.className = "tbl_content gu_selected";
-	        btn_gu_suji.className = "tbl_content";
-	        map.removeLayer(si_yongin);
-	        map.removeLayer(gu_cheoin);
-	        map.addLayer(gu_giheung);
-	        map.removeLayer(gu_suji);
-	        map.getView().animate({
-	            center: ol.proj.transform([127.1213408459, 37.2674315832], "EPSG:4326", "EPSG:900913"),
-	            zoom: 11.5,
-	            duration: 800
-	        });
+		// 선택되어 있지 않으면 기흥구 선택
+		else{
+			btn_gu_cheoin.className = "tbl_content";
+			btn_gu_giheung.className = "tbl_content gu_selected";
+			btn_gu_suji.className = "tbl_content";
+			map.removeLayer(si_yongin);
+			map.removeLayer(gu_cheoin);
+			map.addLayer(gu_giheung);
+			map.removeLayer(gu_suji);
+			map.getView().animate({
+				center: ol.proj.transform([127.1213408459, 37.2674315832], "EPSG:4326", "EPSG:900913"),
+				zoom: 11.5,
+				duration: 800
+			});
 	        
-	        // 기흥구 소속 차량 불러오기
-	        fetchGet("/carList?car_area=gu_giheung", showCarList);
+			// 기흥구 소속 차량 불러오기
+			fetchGet("/carList?car_area=gu_giheung", showCarList);
 	        
-	        // 차량 정보를 안 보이게
-	    	selectedCar_info.style.display = "none";
+			// 차량 정보를 안 보이게
+			selectedCar_info.style.display = "none";
 	    	
-	    	// 기존의 레이어 삭제
-	        deleteLayers();
-	    }
+			// 기존의 레이어 삭제
+			deleteLayers();
+		}
 	}
 
 	// 수지구 버튼을 클릭하면
 	btn_gu_suji.onclick = function() {
 		// 이미 선택되어 있으면 선택 해제하고 용인시 레이어 보여주기
-	    if (btn_gu_suji.className==="tbl_content gu_selected") {
-	        btn_gu_suji.className = "tbl_content";
-	        map.addLayer(si_yongin);
-	        map.removeLayer(gu_cheoin);
-	        map.removeLayer(gu_giheung);
-	        map.removeLayer(gu_suji);
-	        map.getView().animate({
-	            center: ol.proj.transform([127.1775537, 37.2410864], "EPSG:4326", "EPSG:900913"),
-	            zoom: 11,
-	            duration: 800
-	        });
+		if (btn_gu_suji.className==="tbl_content gu_selected") {
+			btn_gu_suji.className = "tbl_content";
+			map.addLayer(si_yongin);
+			map.removeLayer(gu_cheoin);
+			map.removeLayer(gu_giheung);
+			map.removeLayer(gu_suji);
+			map.getView().animate({
+				center: ol.proj.transform([127.1775537, 37.2410864], "EPSG:4326", "EPSG:900913"),
+				zoom: 11,
+				duration: 800
+			});
 	        
-	        // 차량 목록 전체 불러오기
-	    	fetchGet("/carListAll", showCarListAll);
+			// 차량 목록 전체 불러오기
+			fetchGet("/carListAll", showCarListAll);
 	    	
-	    	// 차량 정보를 안 보이게
-	    	selectedCar_info.style.display = "none";
+			// 차량 정보를 안 보이게
+			selectedCar_info.style.display = "none";
 	    	
-	    	// 기존의 레이어 삭제
-	        deleteLayers();
-	    } 
-	    // 선택되어 있지 않으면 수지구 선택
-	    else {
-	        btn_gu_cheoin.className = "tbl_content";
-	        btn_gu_giheung.className = "tbl_content";
-	        btn_gu_suji.className = "tbl_content gu_selected";
-	        map.removeLayer(si_yongin);
-	        map.removeLayer(gu_cheoin);
-	        map.removeLayer(gu_giheung);
-	        map.addLayer(gu_suji);
-	        map.getView().animate({
-	            center: ol.proj.transform([127.0715510732, 37.3334474297], "EPSG:4326", "EPSG:900913"),
-	            zoom: 11.5,
-	            duration: 800
-	        });
+			// 기존의 레이어 삭제
+			deleteLayers();
+		} 
+		// 선택되어 있지 않으면 수지구 선택
+		else {
+			btn_gu_cheoin.className = "tbl_content";
+			btn_gu_giheung.className = "tbl_content";
+			btn_gu_suji.className = "tbl_content gu_selected";
+			map.removeLayer(si_yongin);
+			map.removeLayer(gu_cheoin);
+			map.removeLayer(gu_giheung);
+			map.addLayer(gu_suji);
+			map.getView().animate({
+				center: ol.proj.transform([127.0715510732, 37.3334474297], "EPSG:4326", "EPSG:900913"),
+				zoom: 11.5,
+				duration: 800
+			});
 	        
-	        // 수지구 소속 차량 불러오기
-	        fetchGet("/carList?car_area=gu_suji", showCarList);
+			// 수지구 소속 차량 불러오기
+			fetchGet("/carList?car_area=gu_suji", showCarList);
 	        
-	        // 차량 정보를 안 보이게
-	    	selectedCar_info.style.display = "none";
+			// 차량 정보를 안 보이게
+			selectedCar_info.style.display = "none";
 	    	
-	    	// 기존의 레이어 삭제
-	        deleteLayers();
-	    }
+			// 기존의 레이어 삭제
+			deleteLayers();
+		}
 	}
 })
 
@@ -419,8 +419,8 @@ function selectCar(selectedCar){
 	selectedCar_info.style.display = "block";
 	selectedCar_num.innerHTML = `<i class="fa-solid fa-truck-front" style="padding-left: 55px"></i> <span id="car_num">` + selectedCar.innerText + `</span><span id="btn_chart" style="margin-right: 5px">통계보기 &raquo;</span>`;
 	
-    // 기존의 레이어 삭제
-    deleteLayers();
+	// 기존의 레이어 삭제
+	deleteLayers();
     
 	// 기존의 운행시간, 청소비율 삭제
 	clean_time.innerText = "";
@@ -430,13 +430,13 @@ function selectCar(selectedCar){
 	getDateList(car_num.innerText);
     
 	// 통계 모달 보여주기
-    btn_chart.addEventListener("click", function() {
+	btn_chart.addEventListener("click", function() {
 		showModal("#modal_chart");
 		modal_chart_title.innerHTML = `<i class="fa-solid fa-truck-front"> <span style="font-family: 'Noto Sans KR', sans-serif">` + car_num.innerText + `</span>`;
 	});
     
-    // 통계 모달에서 선택한 기간의 통계 보여주기
-    btn_modal_chart_submit.addEventListener("click", function() {
+	// 통계 모달에서 선택한 기간의 통계 보여주기
+	btn_modal_chart_submit.addEventListener("click", function() {
 		fetchGet("/chart?car_num=" + car_num.innerText + "&beginDate=" + beginDate.value + "&endDate=" + endDate.value, buildChart);
 	});
 }
