@@ -32,7 +32,7 @@ function buildChart(result) {
                 legend: false,
                 title: {
                   display: true,
-                  text: '운행시간(분)'
+                  text: "운행시간(분)"
                 }
             }
         }
@@ -77,7 +77,7 @@ function buildChart(result) {
                 legend: false,
                 title: {
                   display: true,
-                  text: '청소비율(%)'
+                  text: "청소비율(%)"
                 }
             }
         }
@@ -90,5 +90,5 @@ function timeToMinutes(time) {
     const hours = parseInt(parts[0], 10);
     const minutes = parseInt(parts[1], 10);
     const seconds = parseInt(parts[2], 10);
-    return (hours * 60) + minutes + (seconds / 60);
+    return (hours*60) + minutes + (seconds/60);
 }

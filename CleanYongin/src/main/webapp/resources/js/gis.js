@@ -12,12 +12,12 @@ window.addEventListener("load", function(){
 	var attr = "&copy; <a href='http://dev.vworld.kr'>vworld</a>";
 	var VworldHybrid = new ol.source.XYZ({
 		url: "https://api.vworld.kr/req/wmts/1.0.0/CEB52025-E065-364C-9DBA-44880E3B02B8/Hybrid/{z}/{y}/{x}.png"
-	}); //문자 타일 레이어
+	}); // 문자 타일 레이어
 	
 	var VworldSatellite = new ol.source.XYZ({
 		url: "https://api.vworld.kr/req/wmts/1.0.0/CEB52025-E065-364C-9DBA-44880E3B02B8/Satellite/{z}/{y}/{x}.jpeg"
 		,attributions : attr
-	}); //항공사진 레이어 타일
+	}); // 항공사진 레이어 타일
 
 	var VworldBase = new ol.source.XYZ({
 		url: "https://api.vworld.kr/req/wmts/1.0.0/CEB52025-E065-364C-9DBA-44880E3B02B8/Base/{z}/{y}/{x}.png"
@@ -34,7 +34,7 @@ window.addEventListener("load", function(){
     var element = document.createElement("div");
     element.className = "rotate-north ol-unselectable ol-control ol-mycontrol";
 	
-	btn_base.onclick=function(){
+	btn_base.onclick = function(){
 		var _this = this;
         map.getLayers().forEach(function(layer){
 			if(layer.get("name")=="vworld"){
@@ -45,7 +45,7 @@ window.addEventListener("load", function(){
 	    })
     }    
 	
-	btn_satellite.onclick=function(){
+	btn_satellite.onclick = function(){
 		var _this = this;
         map.getLayers().forEach(function(layer){
 			if(layer.get("name")=="vworld"){
@@ -56,11 +56,11 @@ window.addEventListener("load", function(){
 	    })
     }
 	
-	btn_hybrid.onclick=function(){
+	btn_hybrid.onclick = function(){
     	var _this = this;
    		map.getLayers().forEach(function(layer){
    			if(layer.get("name")=="hybrid"){
-   				if(_this.className== "on tbl_content tbl_selected_hybrid"){
+   				if(_this.className=="on tbl_content tbl_selected_hybrid"){
     				layer.setSource(null);
     				_this.className = "tbl_content";
    				}

@@ -97,5 +97,6 @@
 	from points
 	where car_num = #{car_num} and date between #{beginDate} and #{endDate}
 	group by date
+	order by date
   </select>
 </mapper>

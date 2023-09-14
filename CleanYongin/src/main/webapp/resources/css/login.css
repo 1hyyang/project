@@ -46,6 +46,14 @@ html, body{
 	margin: 5px 0px 5px 0px;
 	padding: 5px;
 }
+/* 자동완성시 배경색 변경 */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	transition: background-color 5000s;
+	-webkit-text-fill-color: #000 !important;
+}
 #btn_login{
 	border: 1px solid #00aeba;
 	border-radius: 5px;

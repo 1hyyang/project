@@ -14,8 +14,6 @@ html, body{
 	right: 15px;	
 	width: 30px;
 	height: 30px;
-	box-shadow: 2px 2px 2px grey;
-	border-radius: 30px;
 	cursor: pointer;
 }
 #container{
@@ -254,6 +252,14 @@ input[name=car_num], select[name=car_type], select[name=car_area]{
 	width: 350px;
 	height: 30px;
 	line-height: 30px;	
+}
+/* 자동완성시 배경색 변경 */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	transition: background-color 5000s;
+	-webkit-text-fill-color: #000 !important;
 }
 .file-selector{
 	border: 1px solid lightgrey;
