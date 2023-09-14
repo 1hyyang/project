@@ -36,24 +36,24 @@ window.addEventListener("load", function(){
 	
 	btn_base.onclick = function(){
 		var _this = this;
-        map.getLayers().forEach(function(layer){
+		map.getLayers().forEach(function(layer){
 			if(layer.get("name")=="vworld"){
 				btn_satellite.className = "tbl_content";
 				_this.className = "tbl_content tbl_selected";
 				layer.setSource(VworldBase);
 			}
-        })
+		})
 	}    
 	
 	btn_satellite.onclick = function(){
 		var _this = this;
-        map.getLayers().forEach(function(layer){
+		map.getLayers().forEach(function(layer){
 			if(layer.get("name")=="vworld"){
 				btn_base.className = "tbl_content";
 				_this.className = "tbl_content tbl_selected";
 				layer.setSource(VworldSatellite);
 			}
-        })
+		})
 	}
 	
 	btn_hybrid.onclick = function(){
@@ -72,11 +72,11 @@ window.addEventListener("load", function(){
    		})
 	}
     
-    element.appendChild(base_button);
-    element.appendChild(sate_button);
-    element.appendChild(hybrid_button);    
+	element.appendChild(base_button);
+	element.appendChild(sate_button);
+	element.appendChild(hybrid_button);    
     
-    var layerControl = new ol.control.Control({element: element});
+	var layerControl = new ol.control.Control({element: element});
        
 	map = new ol.Map({
 		controls: ol.control.defaults().extend([
@@ -117,30 +117,30 @@ window.addEventListener("load", function(){
 	})
 
 	// 처인구 레이어 정의
-    var gu_cheoin = new ol.layer.Tile({
-        source: new ol.source.TileWMS({
-            url: "http://localhost:8080/geoserver/wms",
-            params: {
-            	"layers" : "geoserver:gu_cheoin",
-            	"tiled" : "true"
-            },
-            serverType: "geoserver"
-        }),
-        name: "gu_cheoin"
-    })
+	var gu_cheoin = new ol.layer.Tile({
+		source: new ol.source.TileWMS({
+			url: "http://localhost:8080/geoserver/wms",
+			params: {
+				"layers" : "geoserver:gu_cheoin",
+				"tiled" : "true"
+			},
+			serverType: "geoserver"
+		}),
+		name: "gu_cheoin"
+	})
 
 	// 기흥구 레이어 정의
-    var gu_giheung = new ol.layer.Tile({
-        source: new ol.source.TileWMS({
-            url: "http://localhost:8080/geoserver/wms",
-            params: {
-            	"layers" : "geoserver:gu_giheung",
-            	"tiled" : "true"
-            },
-            serverType: "geoserver"
-        }),
-        name: "gu_giheung"
-    })
+	var gu_giheung = new ol.layer.Tile({
+		source: new ol.source.TileWMS({
+			url: "http://localhost:8080/geoserver/wms",
+			params: {
+				"layers" : "geoserver:gu_giheung",
+				"tiled" : "true"
+			},
+			serverType: "geoserver"
+		}),
+		name: "gu_giheung"
+	})
 
 	// 수지구 레이어 정의
 	var gu_suji = new ol.layer.Tile({
@@ -156,7 +156,7 @@ window.addEventListener("load", function(){
 	})
     
 	// 용인시 레이어 추가
-    map.addLayer(si_yongin);
+	map.addLayer(si_yongin);
 
 	// 처인구 버튼을 클릭하면
 	btn_gu_cheoin.onclick = function() {
