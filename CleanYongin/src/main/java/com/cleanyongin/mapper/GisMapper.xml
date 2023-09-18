@@ -8,11 +8,11 @@
   </select>
   
   <select id="getCarListAll" resultType="com.cleanyongin.vo.CarVO">
-  	select * from car
+  	select * from car order by car_num
   </select>
   
   <select id="getCarList" resultType="com.cleanyongin.vo.CarVO">
-  	select * from car where car_area = #{car_area}
+  	select * from car where car_area = #{car_area} order by car_num
   </select>
  
   <select id="getDateList" resultType="com.cleanyongin.vo.PointsVO">
