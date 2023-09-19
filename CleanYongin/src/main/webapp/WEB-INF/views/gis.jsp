@@ -5,16 +5,15 @@
 <html>
 <head>
 <title>용인시 청소차 관제 시스템</title>
-<script src="https://openlayers.org/en/v5.3.0/build/ol.js"></script>
 <link rel="stylesheet" 	href="https://openlayers.org/en/v5.3.0/css/ol.css" type="text/css">
 <link rel="stylesheet" href="/resources/css/gis.css" type="text/css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="icon" type="image/png" sizes="32x32" href="/resources/images/favicon-32x32.png">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600&display=swap" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
-<script src="https://kit.fontawesome.com/0aadd0de21.js" crossorigin="anonymous"></script>
+<script src="https://openlayers.org/en/v5.3.0/build/ol.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+<script src="https://kit.fontawesome.com/0aadd0de21.js" crossorigin="anonymous"></script>
 <script src="/resources/js/gis.js"></script>
 <script src="/resources/js/gis_carInfo.js"></script>
 <script src="/resources/js/gis_modal.js"></script>
