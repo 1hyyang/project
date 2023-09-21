@@ -12,5 +12,6 @@
 <img width="100%" src="https://github.com/1hyyang/project/assets/128003856/7176f878-b8a0-4215-b3d7-45586225b3ab"/>
 <img width="100%" src="https://github.com/1hyyang/project/assets/128003856/be59b051-3997-4fd8-8f73-d2baa230a245"/>
 <img width="100%" src="https://github.com/1hyyang/project/assets/128003856/a7a0babe-ced0-4d29-b884-4d6f1ceba1fb"/>
+<video width="100%" src="https://github.com/1hyyang/project/assets/128003856/4c04bf01-1fa4-4f9f-a021-e987793d1667"/>
 <img width="100%" src="https://github.com/1hyyang/project/assets/128003856/c6289e28-17d0-491e-8abb-101cf2ad8f91"/>
 <img width="100%" src="https://github.com/1hyyang/project/assets/128003856/79777b0d-4627-4d98-a4e1-f5625f9966e8"/>
