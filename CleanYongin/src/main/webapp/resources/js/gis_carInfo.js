@@ -8,7 +8,7 @@ today.setHours(0,0,0,0);    // 비교 편의를 위해 today의 시간을 초기
 
 // 달력 생성 : 해당 달에 맞춰 테이블을 만들고, 날짜를 채워 넣는다
 function buildCalendar(result) {
-	let firstDate = new Date(nowMonth.getFullYear(), nowMonth.getMonth(), 1);     // 이번달 1일
+	let firstDate = new Date(nowMonth.getFullYear(), nowMonth.getMonth(), 1);   // 이번달 1일
 	let lastDate = new Date(nowMonth.getFullYear(), nowMonth.getMonth()+1, 0);  // 이번달 마지막날
 
 	let tbody_Calendar = document.querySelector(".Calendar > tbody");
@@ -21,13 +21,13 @@ function buildCalendar(result) {
 
 	let nowRow = tbody_Calendar.insertRow();        // 첫번째 행 추가
 
-	for (let i=0; i<firstDate.getDay(); i++) {  // 이번달 1일의 요일만큼
-		let nowColumn = nowRow.insertCell();        // 열 추가
+	for (let i=0; i<firstDate.getDay(); i++) {  	// 이번달 1일의 요일만큼
+		let nowColumn = nowRow.insertCell();    // 열 추가
 	}
 
 	for (let nowDay=firstDate; nowDay<=lastDate; nowDay.setDate(nowDay.getDate()+1)) {   // day는 날짜를 저장하는 변수, 이번달 마지막날까지 증가시키며 반복  
 		let nowColumn = nowRow.insertCell();        // 새 열을 추가하고
-		nowColumn.innerText = nowDay.getDate();      // 추가한 열에 날짜 입력
+		nowColumn.innerText = nowDay.getDate();     // 추가한 열에 날짜 입력
 
 		if (nowDay.getDay()==6) {                 
 			nowRow = tbody_Calendar.insertRow();    // 새로운 행 추가
@@ -66,35 +66,35 @@ function nextCalendar() {
 // 날짜 선택
 function selectDate(nowColumn) {
 	// 이미 선택되었던 날짜 class 제거
-    if (document.getElementsByClassName("selectedDay")[0]) {
-        document.getElementsByClassName("selectedDay")[0].classList.remove("selectedDay");
-    }
+	if (document.getElementsByClassName("selectedDay")[0]) {
+		document.getElementsByClassName("selectedDay")[0].classList.remove("selectedDay");
+	}
 	// 새로 선택된 날짜 class 추가
-    nowColumn.classList.add("selectedDay");
+	nowColumn.classList.add("selectedDay");
     
-    // 기존의 레이어 삭제
-    deleteLayers();
+	// 기존의 레이어 삭제
+	deleteLayers();
 
-    // 운행시간/청소비율 구하기, 포인트 및 경로 레이어 추가
-    let selectedDay = calYear.innerText + "-" + leftPad(calMonth.innerText) + "-" + leftPad(document.getElementsByClassName("selectedDay")[0].innerText);
-    getCleanTimeRatio(selectedDay, car_num.innerText);
+	// 운행시간/청소비율 구하기, 포인트 및 경로 레이어 추가
+	let selectedDay = calYear.innerText + "-" + leftPad(calMonth.innerText) + "-" + leftPad(document.getElementsByClassName("selectedDay")[0].innerText);
+	getCleanTimeRatio(selectedDay, car_num.innerText);
 }
 
 function deleteLayers(){
 	// 기존의 clean_o, clean_x, beginPoint, endPoint, course 레이어 삭제
-    map.getLayers().getArray()
+	map.getLayers().getArray()
 	  .filter(layer => layer.get("name")==="clean_o")
 	  .forEach(layer => map.removeLayer(layer));    
-    map.getLayers().getArray()
+	map.getLayers().getArray()
 	  .filter(layer => layer.get("name")==="clean_x")
 	  .forEach(layer => map.removeLayer(layer));
-    map.getLayers().getArray()
+	map.getLayers().getArray()
 	  .filter(layer => layer.get("name")==="beginPoint")
 	  .forEach(layer => map.removeLayer(layer));
-    map.getLayers().getArray()
+	map.getLayers().getArray()
 	  .filter(layer => layer.get("name")==="endPoint")
 	  .forEach(layer => map.removeLayer(layer));
-    map.getLayers().getArray()
+	map.getLayers().getArray()
 	  .filter(layer => layer.get("name")==="course")
 	  .forEach(layer => map.removeLayer(layer));
 }
@@ -111,93 +111,93 @@ function showCleanTimeRatio(result){
 	// clean_o, clean_x, beginPoint, endPoint, course 레이어 추가
 	let selectedDay = calYear.innerText + "-" + leftPad(calMonth.innerText) + "-" + leftPad(document.getElementsByClassName("selectedDay")[0].innerText);
 	var clean_o = new ol.layer.Tile({
-        source: new ol.source.TileWMS({
-            url: "http://localhost:8080/geoserver/wms",
-            params: {
-                "layers": "geoserver:clean_o",
-                "tiled": "true",
-                "viewparams": "date:" + selectedDay + ";car_num:" + car_num.innerText
-            },
-            serverType: "geoserver"
-        }),
-        name: "clean_o"
-    });
+		source: new ol.source.TileWMS({
+			url: "http://localhost:8080/geoserver/wms",
+			params: {
+				"layers": "geoserver:clean_o",
+		                "tiled": "true",
+		                "viewparams": "date:" + selectedDay + ";car_num:" + car_num.innerText
+			},
+			serverType: "geoserver"
+		}),
+	        name: "clean_o"
+	});
     
-    var clean_x = new ol.layer.Tile({
-        source: new ol.source.TileWMS({
-            url: "http://localhost:8080/geoserver/wms",
-            params: {
-                "layers": "geoserver:clean_x",
-                "tiled": "true",
-                "viewparams": "date:" + selectedDay + ";car_num:" + car_num.innerText
-            },
-            serverType: "geoserver"
-        }),
-        name: "clean_x"
-    });	
+	var clean_x = new ol.layer.Tile({
+		source: new ol.source.TileWMS({
+			url: "http://localhost:8080/geoserver/wms",
+			params: {
+		  		"layers": "geoserver:clean_x",
+				"tiled": "true",
+				"viewparams": "date:" + selectedDay + ";car_num:" + car_num.innerText
+			},
+			serverType: "geoserver"
+		}),
+		name: "clean_x"
+	});	
     
-    var beginPoint = new ol.layer.Tile({
-        source: new ol.source.TileWMS({
-            url: "http://localhost:8080/geoserver/wms",
-            params: {
-                "layers": "geoserver:beginPoint",
-                "tiled": "true",
-                "viewparams": "date:" + selectedDay + ";car_num:" + car_num.innerText
-            },
-            serverType: "geoserver"
-        }),
-        name: "beginPoint"
-    }); 
+	var beginPoint = new ol.layer.Tile({
+		source: new ol.source.TileWMS({
+			url: "http://localhost:8080/geoserver/wms",
+			params: {
+				"layers": "geoserver:beginPoint",
+				"tiled": "true",
+				"viewparams": "date:" + selectedDay + ";car_num:" + car_num.innerText
+			},
+			serverType: "geoserver"
+		}),
+		name: "beginPoint"
+	}); 
     
-    var endPoint = new ol.layer.Tile({
-        source: new ol.source.TileWMS({
-            url: "http://localhost:8080/geoserver/wms",
-            params: {
-                "layers": "geoserver:endPoint",
-                "tiled": "true",
-                "viewparams": "date:" + selectedDay + ";car_num:" + car_num.innerText
-            },
-            serverType: "geoserver"
-        }),
-        name: "endPoint"
-    }); 
+	var endPoint = new ol.layer.Tile({
+		source: new ol.source.TileWMS({
+			url: "http://localhost:8080/geoserver/wms",
+			params: {
+				"layers": "geoserver:endPoint",
+				"tiled": "true",
+				"viewparams": "date:" + selectedDay + ";car_num:" + car_num.innerText
+			},
+			serverType: "geoserver"
+		}),
+		name: "endPoint"
+	}); 
     
-    var course = new ol.layer.Tile({
-        source: new ol.source.TileWMS({
-            url: "http://localhost:8080/geoserver/wms",
-            params: {
-                "layers": "geoserver:course",
-                "tiled": "true",
-                "viewparams": "date:" + selectedDay + ";car_num:" + car_num.innerText
-            },
-            serverType: "geoserver"
-        }),
-        name: "course"
-    });   
+	var course = new ol.layer.Tile({
+		source: new ol.source.TileWMS({
+			url: "http://localhost:8080/geoserver/wms",
+			params: {
+				"layers": "geoserver:course",
+				"tiled": "true",
+				"viewparams": "date:" + selectedDay + ";car_num:" + car_num.innerText
+			},
+			serverType: "geoserver"
+		}),
+		name: "course"
+	});   
     
-    // 경로 레이어 추가
-    map.addLayer(course);
+	// 경로 레이어 추가
+	map.addLayer(course);
     
-    // 청소비율이 50% 이상이면 clean_o 레이어가 위로 가도록
+	// 청소비율이 50% 이상이면 clean_o 레이어가 위로 가도록
 	if(result.cleanTimeRatio.ratio>=50.00){
 		map.addLayer(clean_x);
-	    map.addLayer(clean_o);
+		map.addLayer(clean_o);
 	} 
 	else{
 		map.addLayer(clean_o);
-	    map.addLayer(clean_x);
+		map.addLayer(clean_x);
 	}
 	
 	// 청소 시작/종료 위치 레이어 추가
-    map.addLayer(beginPoint);
+	map.addLayer(beginPoint);
 	map.addLayer(endPoint);
 	
-    // 중심 좌표 이동
-    map.getView().animate({
-        center: ol.proj.transform([parseFloat(result.center.lon), parseFloat(result.center.lat)], "EPSG:4326", "EPSG:900913"),
-        zoom: 15,
-        duration: 800
-    }); 
+	// 중심 좌표 이동
+	map.getView().animate({
+	        center: ol.proj.transform([parseFloat(result.center.lon), parseFloat(result.center.lat)], "EPSG:4326", "EPSG:900913"),
+	        zoom: 15,
+	        duration: 800
+	}); 
 }
 
 function leftPad(value) {
