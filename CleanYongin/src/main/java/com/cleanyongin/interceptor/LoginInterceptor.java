@@ -24,8 +24,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 	 * 	false : 요청 컨트롤러 실행하지 않음
 	 */
 
-	// /board/list로 접근하면 BoardController를 실행하기 전에 이 LoginInterceptor의 preHandle 메소드가 실행되어
-	// 로그인한 상태에서만 목록을 조회하고 아닌 경우 로그인 페이지로 이동
+	// /gis로 접근하면 GisController를 실행 전 LoginInterceptor의 preHandle 메소드가 실행
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		HttpSession session = request.getSession();
