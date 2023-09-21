@@ -1,4 +1,4 @@
-# project_CleanYongin
+# project-CleanYongin
 <img width="100%" src="https://github.com/1hyyang/project/assets/128003856/df4af2f6-3a27-4df7-bb09-e9ae2f4bcf63"/>
 <img width="100%" src="https://github.com/1hyyang/project/assets/128003856/20e9e3ca-320f-4bc8-bdd9-9e2e56ab62d2"/>
 <img width="100%" src="https://github.com/1hyyang/project/assets/128003856/61895aa0-e7b9-4ac5-9529-5e3b08fa8d79"/>
