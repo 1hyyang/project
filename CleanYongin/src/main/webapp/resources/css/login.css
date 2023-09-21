@@ -6,7 +6,7 @@
 html, body{
 	height: 100%;
 	display: flex;
-    align-items: center;
+	align-items: center;
 	background-color: ivory;
 }
 #container{
