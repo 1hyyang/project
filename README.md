@@ -7,18 +7,18 @@
 
 ## ⚙️ 개발 환경 및 시스템 구조
 - Frontend
-  - HTML/JS/CSS
-  - OpenLayers 5.3.0
-  - Chart.js 3.5.1
+  - `HTML` `JS` `CSS`
+  - `OpenLayers 5.3.0`
+  - `Chart.js 3.5.1`
 - Backend
-  - Java 11.0.18
-  - Spring 5.0.7
-  - APACHE TOMCAT 9.0
-  - GeoServer 2.23.2
+  - `Java 11.0.18`
+  - `Spring 5.0.7`
+  - `APACHE TOMCAT 9.0`
+  - `GeoServer 2.23.2`
 - Database
-  - PostgreSQL 13.12
+  - `PostgreSQL 13.12`
 - Desktop
-  - QGIS 3.28
+  - `QGIS 3.28`
 <br>
 
 ## 🪄 주요 기능
