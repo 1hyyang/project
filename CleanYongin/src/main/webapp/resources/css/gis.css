@@ -176,21 +176,21 @@ html, body{
 	float: left;
 }
 .ol-mycontrol {
-    background-color: rgba(255, 255, 255, 0.4);
-    border-radius: 4px;
-    padding: 4px;
-    margin-left: 10px;
-    position: block;
-    width: 136px;
-    top: 5px;
-    left: 40px;
+	background-color: rgba(255, 255, 255, 0.4);
+	border-radius: 4px;
+	padding: 4px;
+	margin-left: 10px;
+	position: block;
+	width: 136px;
+	top: 5px;
+	left: 40px;
 	display: none;
 }
 .ol-mycontrol button {
-    float: left;
+	float: left;
 }
 .ol-mycontrol button.on {
-    background-color: rgba(124,60,55,.5);
+	background-color: rgba(124,60,55,.5);
 }
 
 /* 달력 */
@@ -225,10 +225,10 @@ html, body{
 
 /* 모달창 */
 .modal {
-    width: 400px;
-    background-color: #fff;
-    border: 1px solid lightgrey;
-    border-radius: 5px;
+	width: 400px;
+	background-color: #fff;
+	border: 1px solid lightgrey;
+	border-radius: 5px;
 }
 .modal_title {
 	padding: 13px;
