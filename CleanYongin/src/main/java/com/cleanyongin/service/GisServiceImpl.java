@@ -95,47 +95,47 @@ public class GisServiceImpl implements GisService{
 				e.printStackTrace();
 			}
 			
-	        String line;      
-	        List<String> headerList = null;
-	        
-	        // 저장된 파일 읽어오기
-	        // 	charset 기본 설정이 utf-8이어서 한글 깨짐 발생한다 
-	        // 	파일의 인코딩에 맞는 charset 설정이 필요
-	        try (BufferedReader br = new BufferedReader(new FileReader("C:\\CleanYongin\\" + file.getOriginalFilename(), Charset.forName("EUC-KR")))) {        	
-	        	// readLine() : 파일의 한 줄을 가져와 문자열로 반환
-	            while ((line = br.readLine())!=null) {            	
-	            	// split() : 특정 문자를 기준으로 문자열을 나누어 배열을 반환
-	                String[] data = line.split(",");
-//	                System.out.println("[배열의 타입; @배열 객체의 해시 코드 == " + data);
-
-	                if (headerList==null) {
-	                    // 헤더 데이터 처리
-	                	headerList = new ArrayList<>();
-	                    for (String header:data) {
-	                    	headerList.add(header.trim());
-	                    }
-//	                    System.out.println("헤더 리스트  =================== " + headerList);
-	                } 
-	                else {
-	                    // 행 데이터 처리
-	                    Map<String, Object> row = new HashMap<>();
-	                    for (int i=0; i<headerList.size(); i++) {
-	                        row.put(headerList.get(i), data[i].trim());
-	                    }
-//	                    System.out.println("행 ========================= " + row);
-	                    
-	                    // DB에 저장
-	                    String car_num = (String)row.get("차량");
-	                    String date = (String)row.get("일자");
-	                    String time = (String)row.get("시간");
-	                    String longitude = (String)row.get("x");
-	                    String latitude = (String)row.get("y");
-	                    gisMapper.insertData_gps(car_num, date, time, longitude, latitude);
-	                }
-	            }
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
+		        String line;      
+		        List<String> headerList = null;
+		        
+			// 저장된 파일 읽어오기
+			// 	charset 기본 설정이 utf-8이어서 한글 깨짐 발생한다 
+			// 	파일의 인코딩에 맞는 charset 설정이 필요
+			try (BufferedReader br = new BufferedReader(new FileReader("C:\\CleanYongin\\" + file.getOriginalFilename(), Charset.forName("EUC-KR")))) {        	
+				// readLine() : 파일의 한 줄을 가져와 문자열로 반환
+				while ((line = br.readLine())!=null) {            	
+					// split() : 특정 문자를 기준으로 문자열을 나누어 배열을 반환
+					String[] data = line.split(",");
+					// System.out.println("[배열의 타입; @배열 객체의 해시 코드 == " + data);
+	
+					if (headerList==null) {
+						// 헤더 데이터 처리
+						headerList = new ArrayList<>();
+						for (String header:data) {
+							headerList.add(header.trim());
+						}
+						// System.out.println("헤더 리스트  =================== " + headerList);
+					} 
+					else {
+						// 행 데이터 처리
+						Map<String, Object> row = new HashMap<>();
+						for (int i=0; i<headerList.size(); i++) {
+							row.put(headerList.get(i), data[i].trim());
+						}
+						// System.out.println("행 ========================= " + row);
+		                    
+						// DB에 저장
+						String car_num = (String)row.get("차량");
+						String date = (String)row.get("일자");
+						String time = (String)row.get("시간");
+						String longitude = (String)row.get("x");
+						String latitude = (String)row.get("y");
+						gisMapper.insertData_gps(car_num, date, time, longitude, latitude);
+					}
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		// rpm 파일
@@ -152,46 +152,46 @@ public class GisServiceImpl implements GisService{
 				e.printStackTrace();
 			}
 			
-	        String line;      
-	        List<String> headerList = null;
-	        
-	        // 저장된 파일 읽어오기
-	        //	charset 기본 설정이 utf-8이어서 한글 깨짐 발생한다 
-	        // 	파일의 인코딩에 맞는 charset 설정이 필요
-	        try (BufferedReader br = new BufferedReader(new FileReader("C:\\CleanYongin\\" + file.getOriginalFilename(), Charset.forName("EUC-KR")))) {        	
-	        	// readLine() : 파일의 한 줄을 가져와 문자열로 반환
-	            while ((line = br.readLine())!=null) {            	
-	            	// split() : 특정 문자를 기준으로 문자열을 나누어 배열을 반환
-	                String[] data = line.split(",");
-//	                System.out.println("[배열의 타입; @배열 객체의 해시 코드 == " + data);
-
-	                if (headerList==null) {
-	                    // 헤더 데이터 처리
-	                	headerList = new ArrayList<>();
-	                    for (String header:data) {
-	                    	headerList.add(header.trim());
-	                    }
-//	                    System.out.println("헤더 리스트  =================== " + headerList);
-	                } 
-	                else {
-	                    // 행 데이터 처리
-	                    Map<String, Object> row = new HashMap<>();
-	                    for (int i=0; i<headerList.size(); i++) {
-	                        row.put(headerList.get(i), data[i].trim());
-	                    }
-//	                    System.out.println("행 ========================= " + row);
-	                    
-	                    // DB에 저장
-	                    String car_num = (String)row.get("차량");
-	                    String date = (String)row.get("일자");
-	                    String time = (String)row.get("시간");
-	                    int rpm = Integer.parseInt((String) row.get("rpm"));
-	                    gisMapper.insertData_rpm(car_num, date, time, rpm);
-	                }
-	            }
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
+		        String line;      
+		        List<String> headerList = null;
+		        
+			// 저장된 파일 읽어오기
+			//	charset 기본 설정이 utf-8이어서 한글 깨짐 발생한다 
+			// 	파일의 인코딩에 맞는 charset 설정이 필요
+			try (BufferedReader br = new BufferedReader(new FileReader("C:\\CleanYongin\\" + file.getOriginalFilename(), Charset.forName("EUC-KR")))) {        	
+				// readLine() : 파일의 한 줄을 가져와 문자열로 반환
+				while ((line = br.readLine())!=null) {            	
+					// split() : 특정 문자를 기준으로 문자열을 나누어 배열을 반환
+					String[] data = line.split(",");
+					// System.out.println("[배열의 타입; @배열 객체의 해시 코드 == " + data);
+	
+					if (headerList==null) {
+						// 헤더 데이터 처리
+						headerList = new ArrayList<>();
+						for (String header:data) {
+							headerList.add(header.trim());
+						}
+						// System.out.println("헤더 리스트  =================== " + headerList);
+					} 
+					else {
+						// 행 데이터 처리
+						Map<String, Object> row = new HashMap<>();
+						for (int i=0; i<headerList.size(); i++) {
+							row.put(headerList.get(i), data[i].trim());
+						}
+						// System.out.println("행 ========================= " + row);
+		                    
+						// DB에 저장
+						String car_num = (String)row.get("차량");
+						String date = (String)row.get("일자");
+						String time = (String)row.get("시간");
+						int rpm = Integer.parseInt((String) row.get("rpm"));
+						gisMapper.insertData_rpm(car_num, date, time, rpm);
+					}
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		// noise 파일
@@ -208,46 +208,46 @@ public class GisServiceImpl implements GisService{
 				e.printStackTrace();
 			}
 			
-	        String line;      
-	        List<String> headerList = null;
+			String line;      
+			List<String> headerList = null;
 	        
-	        // 저장된 파일 읽어오기
-	        //	charset 기본 설정이 utf-8이어서 한글 깨짐 발생한다 
-	        // 	파일의 인코딩에 맞는 charset 설정이 필요
-	        try (BufferedReader br = new BufferedReader(new FileReader("C:\\CleanYongin\\" + file.getOriginalFilename(), Charset.forName("EUC-KR")))) {        	
-	        	// readLine() : 파일의 한 줄을 가져와 문자열로 반환
-	            while ((line = br.readLine())!=null) {            	
-	            	// split() : 특정 문자를 기준으로 문자열을 나누어 배열을 반환
-	                String[] data = line.split(",");
-//	                System.out.println("[배열의 타입; @배열 객체의 해시 코드 == " + data);
+			// 저장된 파일 읽어오기
+			//	charset 기본 설정이 utf-8이어서 한글 깨짐 발생한다 
+			// 	파일의 인코딩에 맞는 charset 설정이 필요
+			try (BufferedReader br = new BufferedReader(new FileReader("C:\\CleanYongin\\" + file.getOriginalFilename(), Charset.forName("EUC-KR")))) {        	
+				// readLine() : 파일의 한 줄을 가져와 문자열로 반환
+				while ((line = br.readLine())!=null) {            	
+					// split() : 특정 문자를 기준으로 문자열을 나누어 배열을 반환
+					String[] data = line.split(",");
+					// System.out.println("[배열의 타입; @배열 객체의 해시 코드 == " + data);
 
-	                if (headerList==null) {
-	                    // 헤더 데이터 처리
-	                	headerList = new ArrayList<>();
-	                    for (String header:data) {
-	                    	headerList.add(header.trim());
-	                    }
-//	                    System.out.println("헤더 리스트  =================== " + headerList);
-	                } 
-	                else {
-	                    // 행 데이터 처리
-	                    Map<String, Object> row = new HashMap<>();
-	                    for (int i=0; i<headerList.size(); i++) {
-	                        row.put(headerList.get(i), data[i].trim());
-	                    }
-//	                    System.out.println("행 ========================= " + row);
-	                    
-	                    // DB에 저장
-	                    String car_num = (String)row.get("차량");
-	                    String date = (String)row.get("일자");
-	                    String time = (String)row.get("시간");
-	                    int noise = Integer.parseInt((String) row.get("소음"));
-	                    gisMapper.insertData_noise(car_num, date, time, noise);
-	                }
-	            }
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
+					if (headerList==null) {
+						// 헤더 데이터 처리
+						headerList = new ArrayList<>();
+						for (String header:data) {
+							headerList.add(header.trim());
+						}
+						// System.out.println("헤더 리스트  =================== " + headerList);
+					} 
+					else {
+						// 행 데이터 처리
+						Map<String, Object> row = new HashMap<>();
+						for (int i=0; i<headerList.size(); i++) {
+							row.put(headerList.get(i), data[i].trim());
+						}
+						// System.out.println("행 ========================= " + row);
+		                    
+						// DB에 저장
+						String car_num = (String)row.get("차량");
+						String date = (String)row.get("일자");
+						String time = (String)row.get("시간");
+						int noise = Integer.parseInt((String) row.get("소음"));
+						gisMapper.insertData_noise(car_num, date, time, noise);
+					}
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		// temp 테이블의 데이터를 points 테이블로 삽입
