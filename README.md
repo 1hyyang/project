@@ -1,17 +1,41 @@
 # project-CleanYongin
-<img src="https://github.com/1hyyang/project/assets/128003856/df4af2f6-3a27-4df7-bb09-e9ae2f4bcf63"/>
-<img src="https://github.com/1hyyang/project/assets/128003856/20e9e3ca-320f-4bc8-bdd9-9e2e56ab62d2"/>
-<img src="https://github.com/1hyyang/project/assets/128003856/61895aa0-e7b9-4ac5-9529-5e3b08fa8d79"/>
-<img src="https://github.com/1hyyang/project/assets/128003856/315fce9d-9abb-44e0-82f5-403c950daab5"/>
-<img src="https://github.com/1hyyang/project/assets/128003856/3cff48b6-5314-41fd-b593-6491237d3169"/>
-<img src="https://github.com/1hyyang/project/assets/128003856/54562076-e348-4042-a4fa-1efb5456d467"/>
-<img src="https://github.com/1hyyang/project/assets/128003856/e9fea2df-3ad1-4de0-82aa-c1f7b7c1d20c"/>
-<img src="https://github.com/1hyyang/project/assets/128003856/8721c56b-08b4-483e-8e24-0c9d8954da8e"/>
-<img src="https://github.com/1hyyang/project/assets/128003856/e7aaf8f4-60ea-4c3a-b2e3-dd3aa59ef789"/>
-<img src="https://github.com/1hyyang/project/assets/128003856/e1c909fb-8d45-4d07-ac0b-8a992a2a4ecd"/>
-<img src="https://github.com/1hyyang/project/assets/128003856/7176f878-b8a0-4215-b3d7-45586225b3ab"/>
-<img src="https://github.com/1hyyang/project/assets/128003856/be59b051-3997-4fd8-8f73-d2baa230a245"/>
-<img src="https://github.com/1hyyang/project/assets/128003856/a7a0babe-ced0-4d29-b884-4d6f1ceba1fb"/>
+## 개발 배경 및 목적
+- 미세먼지 저감을 위한 노면 청소차량 사업을 운영하면서 용인시청 관리자가 작업 수행 여부를 실질적으로 확인할 수 있는 방안 필요
+- 청소차량의 진동 및 소음 센서로부터 수집된 데이터를 연계한 GIS 관제시스템 구축
+## 개발 환경 및 시스템 구조
+- Frontend
+  - HTML/JS/CSS
+  - OpenLayers 5.3.0
+  - Chart.js 3.5.1
+- Backend
+  - Java 11.0.18
+  - Spring 5.0.7
+  - APACHE TOMCAT 9.0
+  - GeoServer 2.23.2
+- Database
+  - PostgreSQL 13.12
+- Desktop
+  - QGIS 3.28
+## 주요 기능
+- 로그인
+  - 등록된 사용자만 서비스 이용 가능
+- 배경 지도
+  - 기본/위성/하이브리드의 세 가지 배경 지도 전환
+  - Zoom-in/Zoom-out
+- 상세보기
+  - 선택한 권역(구)의 소속 차량 조회
+  - 선택한 차량의 운행 날짜 조회 및 달력 표시
+  - 선택한 날짜의 운행 시간, 청소 비율 조회
+- 레이어
+  - 용인시와 소소구의 경계를 레이어로 표시
+  - 청소차량의 운행 정보(좌표/진동수/소음, 경로)를 점, 선 레이어로 표시
+- 데이터 입력
+  - 새로운 차량 DB 입력
+  - 좌표/진동수/소음 데이터를 담고 있는 csv 파일 업로드 및 DB 입력
+- 통계
+  - 특정 기간 동안의 청소차량 운행 정보를 그래프로 시각화
+## 기대 효과 및 활용 방안
+- 청소차량 용역사와 용인시청 관리자의 업무 효율성과 정확도 향상을 도모
+- 안전하고 깨끗한 도시 환경 조성을 위한 체계적익 생산적인 운영과 관리 지원 가능
+## 시연
 <video src="https://github.com/1hyyang/project/assets/128003856/4c04bf01-1fa4-4f9f-a021-e987793d1667"></video>
-<img src="https://github.com/1hyyang/project/assets/128003856/c6289e28-17d0-491e-8abb-101cf2ad8f91"/>
-<img src="https://github.com/1hyyang/project/assets/128003856/79777b0d-4627-4d98-a4e1-f5625f9966e8"/>
