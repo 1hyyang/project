@@ -83,20 +83,24 @@ function selectDate(nowColumn) {
 function deleteLayers(){
 	// 기존의 clean_o, clean_x, beginPoint, endPoint, course 레이어 삭제
 	map.getLayers().getArray()
-	  .filter(layer => layer.get("name")==="clean_o")
-	  .forEach(layer => map.removeLayer(layer));    
+	.filter(layer => layer.get("name")==="clean_o")
+	.forEach(layer => map.removeLayer(layer));
+	
 	map.getLayers().getArray()
-	  .filter(layer => layer.get("name")==="clean_x")
-	  .forEach(layer => map.removeLayer(layer));
+	.filter(layer => layer.get("name")==="clean_x")
+	.forEach(layer => map.removeLayer(layer));
+	
 	map.getLayers().getArray()
-	  .filter(layer => layer.get("name")==="beginPoint")
-	  .forEach(layer => map.removeLayer(layer));
+	.filter(layer => layer.get("name")==="beginPoint")
+	.forEach(layer => map.removeLayer(layer));
+	
 	map.getLayers().getArray()
-	  .filter(layer => layer.get("name")==="endPoint")
-	  .forEach(layer => map.removeLayer(layer));
+	.filter(layer => layer.get("name")==="endPoint")
+	.forEach(layer => map.removeLayer(layer));
+	
 	map.getLayers().getArray()
-	  .filter(layer => layer.get("name")==="course")
-	  .forEach(layer => map.removeLayer(layer));
+	.filter(layer => layer.get("name")==="course")
+	.forEach(layer => map.removeLayer(layer));
 }
 
 function getCleanTimeRatio(date, car_num){
